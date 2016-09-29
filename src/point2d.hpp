@@ -3,7 +3,6 @@
 #include <cmath>
 #include <initializer_list>
 #include <functional>
-#include <ostream>
 
 float const kEps = 1e-5;
 
@@ -153,9 +152,3 @@ private:
 
   float m_x = 0.0f, m_y = 0.0f;
 };
-
-std::ostream & operator << (std::ostream & os, Point2D const & obj)
-{
-  os << "Point2D {" << obj.x() << ", " << obj.y() << "}";
-  return os;
-}
