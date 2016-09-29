@@ -1,7 +1,5 @@
 #pragma once
 
-//#include <cmath>
-#include <ostream>
 #include "point2d.hpp"
 
 class Box2D
