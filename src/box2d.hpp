@@ -44,7 +44,7 @@ private:
     Point2D m_point2={ 1.0f, 1.0f };
 };
 
-bool checkBoxes(Box2D const & box1,Box2D const & box2)
+inline bool checkBoxes(Box2D const & box1,Box2D const & box2)
 {
     bool result;
     if( box1.point2().x() <= box2.point1().x() || box2.point2().x() <= box1.point1().x() ||
