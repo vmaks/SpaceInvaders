@@ -2,8 +2,8 @@
 
 #include <cmath>
 #include <initializer_list>
+#include <iostream>
 #include <functional>
-#include <ostream>
 
 float const kEps = 1e-5;
 

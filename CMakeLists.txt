@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 2.8)
 add_definitions(--std=c++11)
 
 # Set up your project name.
-set(PROJECT_NAME template)
+set(PROJECT_NAME SpaceInvaders)
 
 project(${PROJECT_NAME})
 
