@@ -1,6 +1,7 @@
 #pragma once
 
 #include "point2d.hpp"
+#include "box2d.hpp"
 
 class Ray
 {
@@ -40,6 +41,9 @@ public:
   {
     return !(this->operator ==(obj));
   }
+
+  static bool checkIntersection(Ray const & ray,
+                                Box2D const & box);
 
   Point2D & origin() { return m_origin; }
   Point2D & direction() { return m_direction; }
