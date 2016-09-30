@@ -5,7 +5,9 @@
 #include <iostream>
 #include <functional>
 
-float const kEps = 1e-5;
+#include "constants.hpp"
+
+//float const kEps = 1e-5;
 
 class Point2D
 {
@@ -148,7 +150,7 @@ private:
 
   bool EqualWithEps(float v1, float v2) const
   {
-    return fabs(v1 - v2) < kEps;
+    return fabs(v1 - v2) < Constants::kEps;
   }
 
   float m_x = 0.0f, m_y = 0.0f;

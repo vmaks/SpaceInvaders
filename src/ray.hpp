@@ -42,8 +42,13 @@ public:
     return !(this->operator ==(obj));
   }
 
+  /// Check if a ray intersect a box.
   static bool checkIntersection(Ray const & ray,
                                 Box2D const & box);
+
+  /// Convert radian to degrees.
+  static float convertRadianToDegrees(
+      float const & angle);
 
   Point2D & origin() { return m_origin; }
   Point2D & direction() { return m_direction; }
@@ -51,6 +56,7 @@ public:
   Point2D const & origin() const { return m_origin; }
   Point2D const & direction() const { return m_direction; }
 
+private:
   Point2D m_origin;
   Point2D m_direction;
 };

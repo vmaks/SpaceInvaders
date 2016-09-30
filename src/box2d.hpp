@@ -39,6 +39,10 @@ public:
     return m_point1 == obj.m_point1 && m_point2 == obj.m_point2;
   }
 
+  /// Check if a point inside a box.
+  static bool checkInside(Box2D const & box,
+                          Point2D const & point);
+
 private:
     Point2D m_point1={ 0.0f, 0.0f };
     Point2D m_point2={ 1.0f, 1.0f };
