@@ -10,7 +10,8 @@ public:
 
   // Конструктор копирования.
   Box2D(Box2D const & obj)
-    : m_point1(obj.m_point1), m_point2(obj.m_point2)
+    : m_point1(obj.m_point1),
+      m_point2(obj.m_point2)
   {}
 
   // Конструктор с параметрами.
@@ -36,25 +37,25 @@ public:
   // Оператор логического равенства.
   bool operator == (Box2D const & obj) const
   {
-    return m_point1 == obj.m_point1 && m_point2 == obj.m_point2;
+    return m_point1 == obj.m_point1
+        && m_point2 == obj.m_point2;
   }
 
+  ///
+  /// Check if two boxes are intersected with each other.
+  ///
+  static bool checkBoxes(Box2D const & box1,
+                         Box2D const & box2);
+
+  ///
   /// Check if a point inside a box.
+  ///
   static bool checkInside(Box2D const & box,
                           Point2D const & point);
 
 private:
-    Point2D m_point1={ 0.0f, 0.0f };
-    Point2D m_point2={ 1.0f, 1.0f };
+  Point2D m_point1 = { 0.0f, 0.0f };
+  Point2D m_point2 = { 1.0f, 1.0f };
 };
 
-inline bool checkBoxes(Box2D const & box1,Box2D const & box2)
-{
-    bool result;
-    if( box1.point2().x() <= box2.point1().x() || box2.point2().x() <= box1.point1().x() ||
-            box1.point1().y() >= box2.point2().y() || box2.point1().y() >= box1.point2().y() )
-        result = false;
-    else
-        result = true;
-    return result;
-}
+
