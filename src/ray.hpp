@@ -42,13 +42,32 @@ public:
     return !(this->operator ==(obj));
   }
 
+  ///
   /// Check if a ray intersect a box.
+  ///
   static bool checkIntersection(Ray const & ray,
                                 Box2D const & box);
 
+  ///
   /// Convert radian to degrees.
+  ///
   static float convertRadianToDegrees(
       float const & angle);
+
+  ///
+  /// Convert an angle from 0-90 to 0-360 degrees.
+  ///
+  static float recalculateAngle(
+      float const & x,
+      float const & y,
+      float const & angle);
+
+  ///
+  /// Check zero denominator.
+  ///
+  /// If it equalts to zero then simply return a small number.
+  ///
+  static float checkZeroDenominator(float const & value);
 
   Point2D & origin() { return m_origin; }
   Point2D & direction() { return m_direction; }
@@ -61,10 +80,6 @@ private:
   Point2D m_direction;
 };
 
-inline std::ostream & operator << (std::ostream & os,
-                                   Ray const & obj)
-{
-  os << "origin: " << obj.origin() << "; "
-     << "direction: " << obj.direction() << std::endl;
-  return os;
-}
+// Output to the console.
+std::ostream & operator << (std::ostream & os,
+                            Ray const & obj);
