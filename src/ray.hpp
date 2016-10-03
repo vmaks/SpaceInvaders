@@ -14,33 +14,23 @@ public:
       m_direction(direction)
   {}
 
-  Ray(Ray const & ray)
-    : m_origin(ray.m_origin),
-      m_direction(ray.m_direction)
+  void swap(Ray & rhs);
+
+  Ray(Ray const & rhs)
+    : m_origin(rhs.m_origin),
+      m_direction(rhs.m_direction)
   {}
 
-  Ray & operator=(Ray const & obj)
-  {
-    if (this == &obj) return *this;
-    m_origin = obj.m_origin;
-    m_direction = obj.m_direction;
-    return *this;
-  }
+  Ray(Ray && rhs);
 
-  bool operator == (Ray const & obj) const
-  {
-    if (this == &obj) { return true; }
+  // It uses "copy and swap" idiom.
+  Ray & operator=(Ray const & rhs);
 
-    if (this->m_direction != obj.direction()) { return false; }
-    if (this->m_origin != obj.origin()) { return false; }
+  Ray & operator=(Ray && rhs);
 
-    return true;
-  }
+  bool operator == (Ray const & rhs) const;
 
-  bool operator != (Ray const & obj) const
-  {
-    return !(this->operator ==(obj));
-  }
+  bool operator != (Ray const & rhs) const;
 
   ///
   /// Check if a ray intersect a box.
@@ -82,4 +72,4 @@ private:
 
 // Output to the console.
 std::ostream & operator << (std::ostream & os,
-                            Ray const & obj);
+                            Ray const & rhs);

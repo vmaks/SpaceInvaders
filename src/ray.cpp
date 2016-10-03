@@ -8,6 +8,50 @@
 #include "box2d.hpp"
 
 
+void Ray::swap(Ray & rhs)
+{
+  std::swap(m_origin, rhs.m_origin);
+  std::swap(m_direction, rhs.m_direction);
+}
+
+Ray::Ray(Ray && rhs)
+{
+  swap(rhs);
+
+  std::cout << "Move copy constructor" <<std::endl;
+}
+
+Ray & Ray::operator=(Ray && rhs)
+{
+  swap(rhs);
+
+  std::cout << "Move operator=" <<std::endl;
+
+  return *this;
+}
+
+bool Ray::operator ==(const Ray & rhs) const
+{
+  if (this == &rhs) { return true; }
+
+  if (this->m_direction != rhs.direction()) { return false; }
+  if (this->m_origin != rhs.origin()) { return false; }
+
+  return true;
+}
+
+bool Ray::operator !=(const Ray & rhs) const
+{
+  return !(this->operator ==(rhs));
+}
+
+Ray & Ray::operator=(const Ray & rhs)
+{
+  Ray tmp(rhs);
+  swap(tmp);
+  return *this;
+}
+
 bool Ray::checkIntersection(
     Ray const & ray,
     Box2D const & box)
@@ -129,9 +173,9 @@ float Ray::checkZeroDenominator(float const & value)
 }
 
 std::ostream & operator <<(std::ostream & os,
-                           Ray const & obj)
+                           Ray const & rhs)
 {
-  os << "origin: " << obj.origin() << "; "
-     << "direction: " << obj.direction() << std::endl;
+  os << "origin: " << rhs.origin() << "; "
+     << "direction: " << rhs.direction() << std::endl;
   return os;
 }
