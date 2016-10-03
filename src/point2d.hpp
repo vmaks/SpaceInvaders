@@ -25,6 +25,8 @@ public:
     : m_x(x), m_y(y)
   {}
 
+  void swap(Point2D & rhs);
+
   // Оператор логического равенства.
   bool operator == (Point2D const & obj) const
   {
