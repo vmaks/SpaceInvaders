@@ -109,3 +109,57 @@ TEST(ray_test, test_intersection_inside)
 
   EXPECT_EQ(Ray::checkIntersection(r1, box1), true);
 }
+
+// The test contains an error
+// Ray::checkIntersection(r1, box1).
+TEST(ray_test, test_without_intersection_outside)
+{
+  // Send a ray to the right.
+  Ray r1(Point2D(0.0f, 0.0f),
+         Point2D(-1.0f, 0.0f));
+
+  Box2D box1 = { Point2D(1.0f, -1.0f),
+                 Point2D(4.0f, 1.0f) };
+
+  EXPECT_EQ(Ray::checkIntersection(r1, box1), false);
+
+  // Send a ray to the left.
+  Ray r2(Point2D(0.0f, 0.0f),
+         Point2D(1.0f, 0.0f));
+
+  Box2D box2 = { Point2D(-1.0f, -1.0f),
+                 Point2D(-4.0f, 1.0f) };
+
+  EXPECT_EQ(Ray::checkIntersection(r2, box2), false);
+
+  // Send a ray to the upwards.
+  Ray r3(Point2D(0.0f, 0.0f),
+         Point2D(0.0f, -1.0f));
+
+  Box2D box3 = { Point2D(-1.0f, 1.0f),
+                 Point2D(1.0f, 4.0f) };
+
+  EXPECT_EQ(Ray::checkIntersection(r3, box3), false);
+
+  // Send a ray to the bottom.
+  Ray r4(Point2D(0.0f, 0.0f),
+         Point2D(0.0f, 1.0f));
+
+  Box2D box4 = { Point2D(-1.0f, -1.0f),
+                 Point2D(1.0f, -4.0f) };
+
+  EXPECT_EQ(Ray::checkIntersection(r4, box4), false);
+}
+
+TEST(ray_test, move)
+{
+  Ray r1(Point2D(0.0f, 0.0f),
+         Point2D(0.0f, 1.0f));
+
+  Ray r2 = std::move(r1);
+
+  Ray r3;
+
+  r3 = std::move(r1);
+}
+
