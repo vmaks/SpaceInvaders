@@ -38,11 +38,13 @@ public:
   static bool checkInside(Box2D const & box,
                           Point2D const & point);
 
-  static Box2D createBox(Point2D const & minPoint, Point2D const & maxPoint);
+  static Box2D createBox(Point2D const & minPoint,
+                         Point2D const & maxPoint);
 
 private:
 
-  Box2D(Point2D const & minPoint, Point2D const & maxPoint)
+  Box2D(Point2D const & minPoint,
+        Point2D const & maxPoint)
     : m_boxMin(minPoint), m_boxMax(maxPoint)
   {}
 

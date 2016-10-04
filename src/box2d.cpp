@@ -34,27 +34,35 @@ void Box2D::swap(Box2D & obj)
   std::swap(m_boxMax, obj.m_boxMax);
 }
 
-bool Box2D::checkInside(const Box2D & box, const Point2D & point)
+bool Box2D::checkInside(Box2D const & box,
+                        Point2D const & point)
 {
-  return not (point.x() < box.boxMin().x() || point.x() > box.boxMax().x() ||
-                  point.y() < box.boxMin().y() || point.y() > box.boxMax().y());
+  return not (point.x() < box.boxMin().x() ||
+              point.x() > box.boxMax().x() ||
+              point.y() < box.boxMin().y() ||
+              point.y() > box.boxMax().y());
 }
 
 
 
-bool Box2D::checkBoxes(const Box2D & box1, const Box2D & box2)
+bool Box2D::checkBoxes(Box2D const & box1,
+                       Box2D const & box2)
 {
   // If two boxes are not intersected with each other
   // then return false.
   return not ( box1.boxMax().x() <= box2.boxMin().x() ||
-           box2.boxMax().x() <= box1.boxMin().x() ||
-           box1.boxMin().y() >= box2.boxMax().y() ||
-           box2.boxMin().y() >= box1.boxMax().y() );
+               box2.boxMax().x() <= box1.boxMin().x() ||
+               box1.boxMin().y() >= box2.boxMax().y() ||
+               box2.boxMin().y() >= box1.boxMax().y() );
 }
 
-Box2D Box2D::createBox(const Point2D & minPoint, const Point2D & maxPoint)
+Box2D Box2D::createBox(Point2D const & minPoint,
+                       Point2D const & maxPoint)
 {
-  if(minPoint.x()>=maxPoint.x() || minPoint.y()>=maxPoint.y())
-    throw std::invalid_argument("You must create correct box");
-  return Box2D(minPoint,maxPoint);
+  if (minPoint.x() >= maxPoint.x() ||
+      minPoint.y() >= maxPoint.y())
+  {
+    throw std::invalid_argument("You must create a correct box!");
+  }
+  return Box2D(minPoint, maxPoint);
 }
