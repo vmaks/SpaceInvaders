@@ -256,7 +256,7 @@ void Ray::setDirection(const Point2D & direction)
   m_direction = normalize(direction);
 }
 
-std::ostream & operator <<(std::ostream & os,
+std::ostream & operator << (std::ostream & os,
                            Ray const & rhs)
 {
   os << "origin: " << rhs.origin() << "; "
