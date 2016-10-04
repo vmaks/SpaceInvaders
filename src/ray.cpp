@@ -17,16 +17,11 @@ void Ray::swap(Ray & rhs)
 Ray::Ray(Ray && rhs)
 {
   swap(rhs);
-
-  std::cout << "Move copy constructor" <<std::endl;
 }
 
 Ray & Ray::operator=(Ray && rhs)
 {
   swap(rhs);
-
-  std::cout << "Move operator=" <<std::endl;
-
   return *this;
 }
 
