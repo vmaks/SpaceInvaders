@@ -49,5 +49,3 @@ private:
   Point2D m_boxMin = { 0.0f, 0.0f };
   Point2D m_boxMax = { 1.0f, 1.0f };
 };
-
-
