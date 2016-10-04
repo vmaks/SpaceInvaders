@@ -62,6 +62,8 @@ bool Ray::checkIntersection(
     return true;
   }
 
+  bool is_special = false;
+
   // Recalculate box points.
   // Use the point as an origin of a coordinate system for the box.
   float x_1_n = box.point1().x() - ray.origin().x();
@@ -78,6 +80,13 @@ bool Ray::checkIntersection(
 
   float x_ray = ray.direction().x();
   float y_ray = ray.direction().y();
+
+  // It handels special case when rectangle intersepts x-axis
+  // to the right from an origin point of a ray.
+  if (x_ray < x_1_n && x_ray < x_2_n)
+  {
+    is_special = true;
+  }
 
   // Check if the x coordinate is zero.
   x_ray = checkZeroDenominator(x_ray);
@@ -111,15 +120,52 @@ bool Ray::checkIntersection(
     angle_1_n, angle_2_n, angle_3_n, angle_4_n
   };
 
-  // Find a min and max angles for the box points.
-  auto result = std::minmax_element(
-        std::begin(angles), std::end(angles));
+  if (is_special)
+  {
+    // It finds to angles.
+    // Maximum angle in the first quater
+    // and the minimun angle in the fouth quater.
+    float angle_max_first_quater = 0.0f;
+    float angle_min_fourth_quater = 360.0f;
 
-  // Compare the ray angle with the min
-  // and max angles for the box points.
-  if (*result.first <= angle_ray
-      && angle_ray <= *result.second) {
-    return true;
+    for (auto const & item : angles)
+    {
+      if (item < 90.0f)
+      {
+        if (angle_max_first_quater < item)
+        {
+          angle_max_first_quater = item;
+        }
+      }
+      else if (item > 270.0f)
+      {
+        if (angle_min_fourth_quater > item)
+        {
+          angle_min_fourth_quater = item;
+        }
+      }
+    }
+
+    // Compare the ray angle with
+    // the max angle in the first quater
+    // and the min angle in the fouth quater.
+    if (angle_ray <= angle_max_first_quater &&
+        angle_ray >= angle_min_fourth_quater) {
+      return true;
+    }
+  }
+  else
+  {
+    // Find a min and max angles for the box points.
+    auto result = std::minmax_element(
+          std::begin(angles), std::end(angles));
+
+    // Compare the ray angle with the min
+    // and max angles for the box points.
+    if (*result.first <= angle_ray &&
+        angle_ray <= *result.second) {
+      return true;
+    }
   }
 
   return false;
