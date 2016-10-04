@@ -77,5 +77,5 @@ private:
   float m_x = 0.0f, m_y = 0.0f;
 };
 
-inline std::ostream & operator << (std::ostream & os,
-                                   Point2D const & obj);
+std::ostream & operator << (std::ostream & os,
+                            Point2D const & obj);

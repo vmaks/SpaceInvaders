@@ -104,8 +104,8 @@ bool Point2D::EqualWithEps(float v1, float v2) const
   return fabs(v1 - v2) < Constants::kEps;
 }
 
-std::ostream & operator <<(std::ostream & os,
-                           Point2D const & obj)
+std::ostream & operator << (std::ostream & os,
+                            Point2D const & obj)
 {
   os << "Point2D {" << obj.x() << ", " << obj.y() << "}";
   return os;
