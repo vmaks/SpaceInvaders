@@ -213,6 +213,16 @@ float Ray::checkZeroDenominator(float const & value)
   return tmp;
 }
 
+void Ray::setOrigin(const Point2D & origin)
+{
+  m_origin = origin;
+}
+
+void Ray::setDirection(const Point2D & direction)
+{
+  m_direction = direction;
+}
+
 std::ostream & operator <<(std::ostream & os,
                            Ray const & rhs)
 {

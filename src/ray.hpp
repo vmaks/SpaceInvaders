@@ -59,8 +59,8 @@ public:
   ///
   static float checkZeroDenominator(float const & value);
 
-  Point2D & origin() { return m_origin; }
-  Point2D & direction() { return m_direction; }
+  void setOrigin(Point2D const & point);
+  void setDirection(Point2D const & point);
 
   Point2D const & origin() const { return m_origin; }
   Point2D const & direction() const { return m_direction; }
