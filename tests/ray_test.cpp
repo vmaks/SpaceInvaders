@@ -59,8 +59,8 @@ TEST(ray_test, test_intersection_outside)
   Ray r1(Point2D(0.0f, 0.0f),
          Point2D(1.0f, 0.0f));
 
-  Box2D box1 = { Point2D(1.0f, -1.0f),
-                 Point2D(4.0f, 1.0f) };
+  Box2D box1 = Box2D::createBox(Point2D(1.0f, -1.0f),
+                                Point2D(4.0f, 1.0f));
 
   EXPECT_EQ(Ray::checkIntersection(r1, box1), true);
 
@@ -68,8 +68,8 @@ TEST(ray_test, test_intersection_outside)
   Ray r2(Point2D(0.0f, 0.0f),
          Point2D(-1.0f, 0.0f));
 
-  Box2D box2 = { Point2D(-1.0f, -1.0f),
-                 Point2D(-4.0f, 1.0f) };
+  Box2D box2 = Box2D::createBox(Point2D(-4.0f, -1.0f),
+                                Point2D(-1.0f, 1.0f));
 
   EXPECT_EQ(Ray::checkIntersection(r2, box2), true);
 
@@ -77,8 +77,8 @@ TEST(ray_test, test_intersection_outside)
   Ray r3(Point2D(0.0f, 0.0f),
          Point2D(0.0f, 1.0f));
 
-  Box2D box3 = { Point2D(-1.0f, 1.0f),
-                 Point2D(1.0f, 4.0f) };
+  Box2D box3 = Box2D::createBox(Point2D(-1.0f, 1.0f),
+                                Point2D(1.0f, 4.0f));
 
   EXPECT_EQ(Ray::checkIntersection(r3, box3), true);
 
@@ -86,8 +86,8 @@ TEST(ray_test, test_intersection_outside)
   Ray r4(Point2D(0.0f, 0.0f),
          Point2D(0.0f, -1.0f));
 
-  Box2D box4 = { Point2D(-1.0f, -1.0f),
-                 Point2D(1.0f, -4.0f) };
+  Box2D box4 = Box2D::createBox(Point2D(-1.0f, -4.0f),
+                                Point2D(1.0f, -1.0f));
 
   EXPECT_EQ(Ray::checkIntersection(r4, box4), true);
 }
@@ -104,8 +104,8 @@ TEST(ray_test, test_intersection_inside)
   Ray r1(Point2D(0.0f, 0.0f),
          Point2D(1.0f, 0.0f));
 
-  Box2D box1 = { Point2D(-1.0f, -1.0f),
-                 Point2D(1.0f, 1.0f) };
+  Box2D box1 = Box2D::createBox(Point2D(-1.0f, -1.0f),
+                                Point2D(1.0f, 1.0f));
 
   EXPECT_EQ(Ray::checkIntersection(r1, box1), true);
 }
@@ -118,8 +118,8 @@ TEST(ray_test, test_without_intersection_outside)
   Ray r1(Point2D(0.0f, 0.0f),
          Point2D(-1.0f, 0.0f));
 
-  Box2D box1 = { Point2D(1.0f, -1.0f),
-                 Point2D(4.0f, 1.0f) };
+  Box2D box1 = Box2D::createBox(Point2D(1.0f, -1.0f),
+                                Point2D(4.0f, 1.0f));
 
   EXPECT_EQ(Ray::checkIntersection(r1, box1), false);
 
@@ -127,8 +127,8 @@ TEST(ray_test, test_without_intersection_outside)
   Ray r2(Point2D(0.0f, 0.0f),
          Point2D(1.0f, 0.0f));
 
-  Box2D box2 = { Point2D(-1.0f, -1.0f),
-                 Point2D(-4.0f, 1.0f) };
+  Box2D box2 = Box2D::createBox(Point2D(-4.0f, -1.0f),
+                                Point2D(-1.0f, 1.0f));
 
   EXPECT_EQ(Ray::checkIntersection(r2, box2), false);
 
@@ -136,8 +136,8 @@ TEST(ray_test, test_without_intersection_outside)
   Ray r3(Point2D(0.0f, 0.0f),
          Point2D(0.0f, -1.0f));
 
-  Box2D box3 = { Point2D(-1.0f, 1.0f),
-                 Point2D(1.0f, 4.0f) };
+  Box2D box3 = Box2D::createBox(Point2D(-1.0f, 1.0f),
+                                Point2D(1.0f, 4.0f));
 
   EXPECT_EQ(Ray::checkIntersection(r3, box3), false);
 
@@ -145,8 +145,8 @@ TEST(ray_test, test_without_intersection_outside)
   Ray r4(Point2D(0.0f, 0.0f),
          Point2D(0.0f, 1.0f));
 
-  Box2D box4 = { Point2D(-1.0f, -1.0f),
-                 Point2D(1.0f, -4.0f) };
+  Box2D box4 = Box2D::createBox(Point2D(-4.0f, -1.0f),
+                                Point2D(-1.0f, 1.0f));
 
   EXPECT_EQ(Ray::checkIntersection(r4, box4), false);
 }

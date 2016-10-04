@@ -14,10 +14,6 @@ public:
 
   Box2D(Box2D && obj);
 
-  Box2D(Point2D x, Point2D y)
-    : m_boxMin(x), m_boxMax(y)
-  {}
-
   Point2D & boxMin() { return m_boxMin; }
   Point2D & boxMax() { return m_boxMax; }
 
@@ -42,7 +38,14 @@ public:
   static bool checkInside(Box2D const & box,
                           Point2D const & point);
 
+  static Box2D createBox(Point2D const & minPoint, Point2D const & maxPoint);
+
 private:
+
+  Box2D(Point2D const & minPoint, Point2D const & maxPoint)
+    : m_boxMin(minPoint), m_boxMax(maxPoint)
+  {}
+
   Point2D m_boxMin = { 0.0f, 0.0f };
   Point2D m_boxMax = { 1.0f, 1.0f };
 };
