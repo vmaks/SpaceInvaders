@@ -23,26 +23,26 @@ Box2D & Box2D::operator = (Box2D && obj)
 
 bool Box2D::operator == (Box2D const & obj) const
 {
-  return m_point1 == obj.m_point1
-      && m_point2 == obj.m_point2;
+  return m_boxMin == obj.m_boxMin
+      && m_boxMax == obj.m_boxMax;
 }
 
 void Box2D::swap(Box2D & obj)
 {
-  std::swap(m_point1, obj.m_point1);
-  std::swap(m_point2, obj.m_point2);
+  std::swap(m_boxMin, obj.m_boxMin);
+  std::swap(m_boxMax, obj.m_boxMax);
 }
 
 bool Box2D::checkInside(const Box2D &box, const Point2D &point)
 {
-  if ((point.x() >= box.m_point1.x() &&
-       point.x() <= box.m_point2.x() &&
-       point.y() >= box.m_point1.y() &&
-       point.y() <= box.m_point2.y()) ||
-      (point.x() >= box.m_point2.x() &&
-       point.x() <= box.m_point1.x() &&
-       point.y() >= box.m_point2.y() &&
-       point.y() <= box.m_point1.y())
+  if ((point.x() >= box.m_boxMin.x() &&
+       point.x() <= box.m_boxMax.x() &&
+       point.y() >= box.m_boxMin.y() &&
+       point.y() <= box.m_boxMax.y()) ||
+      (point.x() >= box.m_boxMax.x() &&
+       point.x() <= box.m_boxMin.x() &&
+       point.y() >= box.m_boxMax.y() &&
+       point.y() <= box.m_boxMin.y())
       )
   {
     return true;
@@ -57,10 +57,10 @@ bool Box2D::checkBoxes(const Box2D &box1, const Box2D &box2)
 {
   // If two boxes are not intersected with each other
   // then return false.
-  if( box1.point2().x() <= box2.point1().x() ||
-      box2.point2().x() <= box1.point1().x() ||
-      box1.point1().y() >= box2.point2().y() ||
-      box2.point1().y() >= box1.point2().y() )
+  if( box1.boxMax().x() <= box2.boxMin().x() ||
+      box2.boxMax().x() <= box1.boxMin().x() ||
+      box1.boxMin().y() >= box2.boxMax().y() ||
+      box2.boxMin().y() >= box1.boxMax().y() )
   {
     return false;
   }

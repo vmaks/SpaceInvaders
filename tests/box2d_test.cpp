@@ -4,12 +4,12 @@
 TEST(box2d_test, test_construction)
 {
   Box2D box1;
-  EXPECT_EQ(box1.point1(), Point2D(0.0f, 0.0f));
-  EXPECT_EQ(box1.point2(), Point2D(1.0f, 1.0f));
+  EXPECT_EQ(box1.boxMin(), Point2D(0.0f, 0.0f));
+  EXPECT_EQ(box1.boxMax(), Point2D(1.0f, 1.0f));
 
   Box2D box2 = { Point2D(1.0f, 2.0f), Point2D(5.0f, 8.0f) };
-  EXPECT_EQ(box2.point1(), Point2D(1.0f, 2.0f));
-  EXPECT_EQ(box2.point2(), Point2D(5.0f, 8.0f));
+  EXPECT_EQ(box2.boxMin(), Point2D(1.0f, 2.0f));
+  EXPECT_EQ(box2.boxMax(), Point2D(5.0f, 8.0f));
 
   Box2D box3 = box2;
   EXPECT_EQ(box3, box2);

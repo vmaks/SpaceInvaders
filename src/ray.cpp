@@ -66,11 +66,11 @@ bool Ray::checkIntersection(
 
   // Recalculate box points.
   // Use the point as an origin of a coordinate system for the box.
-  float x_1_n = box.point1().x() - ray.origin().x();
-  float x_2_n = box.point2().x() - ray.origin().x();
+  float x_1_n = box.boxMin().x() - ray.origin().x();
+  float x_2_n = box.boxMax().x() - ray.origin().x();
 
-  float y_1_n = box.point1().y() - ray.origin().y();
-  float y_2_n = box.point2().y() - ray.origin().y();
+  float y_1_n = box.boxMin().y() - ray.origin().y();
+  float y_2_n = box.boxMax().y() - ray.origin().y();
 
   float x_3_n = x_1_n;
   float y_3_n = y_2_n;

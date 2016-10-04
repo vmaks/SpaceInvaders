@@ -8,21 +8,21 @@ public:
   Box2D() = default;
 
   Box2D(Box2D const & obj)
-    : m_point1(obj.m_point1),
-      m_point2(obj.m_point2)
+    : m_boxMin(obj.m_boxMin),
+      m_boxMax(obj.m_boxMax)
   {}
 
   Box2D(Box2D && obj);
 
   Box2D(Point2D x, Point2D y)
-    : m_point1(x), m_point2(y)
+    : m_boxMin(x), m_boxMax(y)
   {}
 
-  Point2D & point1() { return m_point1; }
-  Point2D & point2() { return m_point2; }
+  Point2D & boxMin() { return m_boxMin; }
+  Point2D & boxMax() { return m_boxMax; }
 
-  Point2D const & point1() const { return m_point1; }
-  Point2D const & point2() const { return m_point2; }
+  Point2D const & boxMin() const { return m_boxMin; }
+  Point2D const & boxMax() const { return m_boxMax; }
 
   Box2D & operator = (Box2D const & obj);
   Box2D & operator = (Box2D && obj);
@@ -43,8 +43,8 @@ public:
                           Point2D const & point);
 
 private:
-  Point2D m_point1 = { 0.0f, 0.0f };
-  Point2D m_point2 = { 1.0f, 1.0f };
+  Point2D m_boxMin = { 0.0f, 0.0f };
+  Point2D m_boxMax = { 1.0f, 1.0f };
 };
 
 
