@@ -36,7 +36,7 @@ void Box2D::swap(Box2D & obj)
 
 bool Box2D::checkInside(const Box2D & box, const Point2D & point)
 {
-  if ((point.x() >= box.m_boxMin.x() &&
+  return ((point.x() >= box.m_boxMin.x() &&
        point.x() <= box.m_boxMax.x() &&
        point.y() >= box.m_boxMin.y() &&
        point.y() <= box.m_boxMax.y()) ||
@@ -44,12 +44,7 @@ bool Box2D::checkInside(const Box2D & box, const Point2D & point)
        point.x() <= box.m_boxMin.x() &&
        point.y() >= box.m_boxMax.y() &&
        point.y() <= box.m_boxMin.y())
-      )
-  {
-    return true;
-  }
-
-  return false;
+      );
 }
 
 
