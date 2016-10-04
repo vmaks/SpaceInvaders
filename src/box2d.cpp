@@ -3,6 +3,7 @@
 Box2D::Box2D(Box2D && obj)
 {
   swap(obj);
+  std::cout << "Move copy constructor" <<std::endl;
 }
 
 Box2D & Box2D::operator = (Box2D const & obj)
@@ -16,6 +17,7 @@ Box2D & Box2D::operator = (Box2D const & obj)
 Box2D & Box2D::operator = (Box2D && obj)
 {
   swap(obj);
+  std::cout << "Move operator=" <<std::endl;
   return *this;
 }
 

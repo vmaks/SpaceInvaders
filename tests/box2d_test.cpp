@@ -3,24 +3,20 @@
 
 TEST(box2d_test, test_construction)
 {
-  // Тест на создание объекта по умолчанию.
   Box2D box1;
   EXPECT_EQ(box1.point1(), Point2D(0.0f, 0.0f));
   EXPECT_EQ(box1.point2(), Point2D(1.0f, 1.0f));
 
-  // Тест на создание объекта с параметрами.
   Box2D box2 = { Point2D(1.0f, 2.0f), Point2D(5.0f, 8.0f) };
   EXPECT_EQ(box2.point1(), Point2D(1.0f, 2.0f));
   EXPECT_EQ(box2.point2(), Point2D(5.0f, 8.0f));
 
-  // Тест на создание копии объекта.
   Box2D box3 = box2;
   EXPECT_EQ(box3, box2);
 }
 
 TEST(box2d_test, test_check)
 {
-  // Тест на проверку пересечения прямоугольников
   Box2D box1 = { Point2D(0.0f, 0.0f), Point2D(1.0f, 1.0f) };
   Box2D box2 = { Point2D(0.0f, 2.0f), Point2D(1.0f, 3.0f) };
   Box2D box3 = { Point2D(2.0f, 0.0f), Point2D(3.0f, 1.0f) };
@@ -92,4 +88,12 @@ TEST(box2d_test, test_point_check_outside)
 
   EXPECT_EQ(Box2D::checkInside(box1, p1), false);
   EXPECT_EQ(Box2D::checkInside(box2, p2), false);
+}
+
+TEST(box2d_test, move)
+{
+  Box2D r1 { Point2D(0.0f, 0.0f), Point2D(0.0f, 1.0f) };
+  Box2D r2 = std::move(r1);
+  Box2D r3;
+  r3 = std::move(r1);
 }
