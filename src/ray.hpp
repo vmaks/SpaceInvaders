@@ -9,10 +9,7 @@ public:
   Ray() = default;
 
   Ray(Point2D const & origin,
-      Point2D const & direction)
-    : m_origin(origin),
-      m_direction(direction)
-  {}
+      Point2D const & direction);
 
   void swap(Ray & rhs);
 
@@ -24,13 +21,18 @@ public:
   Ray(Ray && rhs);
 
   // It uses "copy and swap" idiom.
-  Ray & operator=(Ray const & rhs);
+  Ray & operator = (Ray const & rhs);
 
-  Ray & operator=(Ray && rhs);
+  Ray & operator = (Ray && rhs);
 
   bool operator == (Ray const & rhs) const;
 
   bool operator != (Ray const & rhs) const;
+
+  ///
+  /// It returns a normalized 2d point.
+  ///
+  static Point2D normalize(Point2D direction);
 
   ///
   /// Check if a ray intersect a box.

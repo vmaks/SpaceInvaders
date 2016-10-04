@@ -163,3 +163,31 @@ TEST(ray_test, move)
   r3 = std::move(r1);
 }
 
+TEST(ray_test, normalize)
+{
+  Point2D direction1(0.0f, 1.0f);
+  direction1 = Ray::normalize(direction1);
+  EXPECT_FLOAT_EQ(direction1.x(), 0.0f);
+  EXPECT_FLOAT_EQ(direction1.y(), 1.0f);
+
+  Point2D direction2(0.0f, -1.0f);
+  direction2 = Ray::normalize(direction2);
+  EXPECT_FLOAT_EQ(direction2.x(), 0.0f);
+  EXPECT_FLOAT_EQ(direction2.y(), -1.0f);
+
+  Point2D direction3(0.0f, 0.0f);
+  direction3 = Ray::normalize(direction3);
+  EXPECT_FLOAT_EQ(direction3.x(), 0.0f);
+  EXPECT_FLOAT_EQ(direction3.y(), 0.0f);
+
+  Point2D direction4(0.0f, 10.0f);
+  direction4 = Ray::normalize(direction4);
+  EXPECT_FLOAT_EQ(direction4.x(), 0.0f);
+  EXPECT_FLOAT_EQ(direction4.y(), 1.0f);
+
+  Point2D direction5(0.0f, -10.0f);
+  direction5 = Ray::normalize(direction5);
+  EXPECT_FLOAT_EQ(direction5.x(), 0.0f);
+  EXPECT_FLOAT_EQ(direction5.y(), -1.0f);
+}
+

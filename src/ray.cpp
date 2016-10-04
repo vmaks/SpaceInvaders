@@ -8,6 +8,13 @@
 #include "box2d.hpp"
 
 
+Ray::Ray(const Point2D & origin,
+         const Point2D & direction)
+  : m_origin(origin)
+{
+  m_direction = normalize(direction);
+}
+
 void Ray::swap(Ray & rhs)
 {
   std::swap(m_origin, rhs.m_origin);
@@ -38,6 +45,18 @@ bool Ray::operator ==(Ray const & rhs) const
 bool Ray::operator !=(Ray const & rhs) const
 {
   return !(this->operator ==(rhs));
+}
+
+Point2D Ray::normalize(Point2D direction)
+{
+  float x = checkZeroDenominator(direction.x());
+  float y = checkZeroDenominator(direction.y());
+
+  float length = sqrt(pow(x, 2.0) + pow(y, 2.0));
+
+  direction /= length;
+
+  return direction;
 }
 
 Ray & Ray::operator=(const Ray & rhs)
@@ -234,7 +253,7 @@ void Ray::setOrigin(const Point2D & origin)
 
 void Ray::setDirection(const Point2D & direction)
 {
-  m_direction = direction;
+  m_direction = normalize(direction);
 }
 
 std::ostream & operator <<(std::ostream & os,
