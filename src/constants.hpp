@@ -2,6 +2,6 @@
 
 struct Constants
 {  
-  static float const kEps;
-  static float const PI;
+  constexpr static float kEps = 1e-5;
+  constexpr static float PI = 3.1415927;
 };
