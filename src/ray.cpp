@@ -30,7 +30,7 @@ Ray & Ray::operator=(Ray && rhs)
   return *this;
 }
 
-bool Ray::operator ==(const Ray & rhs) const
+bool Ray::operator ==(Ray const & rhs) const
 {
   if (this == &rhs) { return true; }
 
@@ -40,7 +40,7 @@ bool Ray::operator ==(const Ray & rhs) const
   return true;
 }
 
-bool Ray::operator !=(const Ray & rhs) const
+bool Ray::operator !=(Ray const & rhs) const
 {
   return !(this->operator ==(rhs));
 }

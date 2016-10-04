@@ -1,5 +1,35 @@
 #include "box2d.hpp"
 
+Box2D::Box2D(Box2D && obj)
+{
+  swap(obj);
+}
+
+Box2D & Box2D::operator = (Box2D const & obj)
+{
+  if (this == &obj) return *this;
+  Box2D tmp(obj);
+  swap(tmp);
+  return *this;
+}
+
+Box2D & Box2D::operator = (Box2D && obj)
+{
+  swap(obj);
+  return *this;
+}
+
+bool Box2D::operator == (Box2D const & obj) const
+{
+  return m_point1 == obj.m_point1
+      && m_point2 == obj.m_point2;
+}
+
+void Box2D::swap(Box2D & obj)
+{
+  std::swap(m_point1, obj.m_point1);
+  std::swap(m_point2, obj.m_point2);
+}
 
 bool Box2D::checkInside(const Box2D &box, const Point2D &point)
 {
