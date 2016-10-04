@@ -1,0 +1,20 @@
+language: cpp
+sudo: required
+dist: trusty
+
+compiler:
+- gcc
+os:
+- linux
+before_install:
+- sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
+- sudo apt-get update -qq
+- sudo apt-get install gcc-4.9 -y
+env:
+  - COMPILER=g++-4.9
+script:
+  - mkdir build
+  - cd build
+  - cmake -DCMAKE_CXX_COMPILER=$COMPILER .. && make
+  - ./SpaceInvaders_test
+
