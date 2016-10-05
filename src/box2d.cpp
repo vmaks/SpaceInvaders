@@ -59,10 +59,19 @@ bool Box2D::checkBoxes(Box2D const & box1,
 Box2D Box2D::createBox(Point2D const & minPoint,
                        Point2D const & maxPoint)
 {
-  if (minPoint.x() >= maxPoint.x() ||
-      minPoint.y() >= maxPoint.y())
+  Point2D min(minPoint);
+  Point2D max(maxPoint);
+  if (min.x() > max.x())
+  {
+    std::swap(min.x(),max.x());
+  }
+  if(min.y() > max.y())
+  {
+    std::swap(min.y(),max.y());
+  }
+  if(min.x() == max.x() || max.y() == min.y())
   {
     throw std::invalid_argument("You must create a correct box!");
   }
-  return Box2D(minPoint, maxPoint);
+  return Box2D(min, max);
 }

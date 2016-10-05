@@ -11,16 +11,27 @@ TEST(box2d_test, test_construction)
   EXPECT_EQ(box2.boxMin(), Point2D(1.0f, 2.0f));
   EXPECT_EQ(box2.boxMax(), Point2D(5.0f, 8.0f));
 
-  try {
-      Box2D box4 = Box2D::createBox(Point2D(1.0f, 2.0f), Point2D(-5.0f, -8.0f));
+  try
+  {
+      Box2D::createBox(Point2D(1.0f, 2.0f), Point2D(1.0f, -8.0f));
   }
-  catch(std::exception const & ex) {
+  catch(std::exception const & ex)
+  {
     std::cout << ex.what() << std::endl;
-      EXPECT_EQ(ex.what(),std::string("You must create correct box"));
+      EXPECT_EQ(ex.what(),std::string("You must create a correct box!"));
   }
 
   Box2D box3 = box2;
   EXPECT_EQ(box3, box2);
+  Box2D box5 = Box2D::createBox(Point2D(1.0f, 2.0f), Point2D(-1.0f, 8.0f));
+  EXPECT_EQ(box5.boxMin(), Point2D(-1.0f, 2.0f));
+  EXPECT_EQ(box5.boxMax(), Point2D(1.0f, 8.0f));
+  Box2D box6 = Box2D::createBox(Point2D(-1.0f, 2.0f), Point2D(1.0f, -8.0f));
+  EXPECT_EQ(box6.boxMin(), Point2D(-1.0f, -8.0f));
+  EXPECT_EQ(box6.boxMax(), Point2D(1.0f, 2.0f));
+  Box2D box7 = Box2D::createBox(Point2D(1.0f, 2.0f), Point2D(-1.0f, -8.0f));
+  EXPECT_EQ(box7.boxMin(), Point2D(-1.0f, -8.0f));
+  EXPECT_EQ(box7.boxMax(), Point2D(1.0f, 2.0f));
 }
 
 TEST(box2d_test, test_check)
