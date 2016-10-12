@@ -1,5 +1,10 @@
 #include "BulletManager.h"
 
+BulletManager::~BulletManager()
+{
+
+}
+
 void BulletManager::Fire()
 {
   if(not m_bullet_list.empty())

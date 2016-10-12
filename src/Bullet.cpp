@@ -1,6 +1,11 @@
 #include "Bullet.h"
 #include <stdexcept>
 
+Bullet::~Bullet()
+{
+
+}
+
 uint Bullet::GetDamage() const
 {
   return m_damage;

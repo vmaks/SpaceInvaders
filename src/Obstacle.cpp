@@ -1,6 +1,11 @@
 #include "Obstacle.h"
 #include <stdexcept>
 
+Obstacle::~Obstacle()
+{
+
+}
+
 uint Obstacle::GetHealth() const
 {
   return m_health;

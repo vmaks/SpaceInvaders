@@ -11,6 +11,7 @@ public:
     : m_width(width),
       m_height(height)
   {}
+  virtual ~Space();
   uint GetWidth() const;
   uint GetHeight() const;
   void SetWidth(uint const & width);

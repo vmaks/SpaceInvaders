@@ -24,3 +24,8 @@ void Space::AddGameEntity(const pGameEntity &gameEntity)
 {
   m_game_entity_list.push_back(gameEntity);
 }
+
+Space::~Space()
+{
+
+}

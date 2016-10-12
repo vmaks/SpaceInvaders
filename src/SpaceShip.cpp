@@ -10,3 +10,8 @@ void SpaceShip::Move()
 {
   std::runtime_error("Not implemented");
 }
+
+SpaceShip::~SpaceShip()
+{
+
+}

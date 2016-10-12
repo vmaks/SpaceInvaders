@@ -11,6 +11,7 @@ public:
     :GameEntity(position,"Bullet"),
       m_damage(damage)
   {}
+  virtual ~Bullet();
   void Update() override;
   void Move() override;
   uint GetDamage() const;

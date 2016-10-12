@@ -13,6 +13,7 @@ public:
             uint const & health)
     : GameEntityWithWeapon(position,"SpaceShip",rate,health)
   {}
+  virtual ~SpaceShip();
   void Update() override;
   void Move() override;
 };
