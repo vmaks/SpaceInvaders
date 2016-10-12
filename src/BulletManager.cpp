@@ -7,8 +7,10 @@ BulletManager::~BulletManager()
 
 void BulletManager::Fire()
 {
-  if(not m_bullet_list.empty())
+  if (not m_bullet_list.empty())
+  {
     m_bullet_list.pop_front();
+  }
 }
 
 std::list<TBulletPtr> BulletManager::GetAmmo() const
@@ -18,6 +20,8 @@ std::list<TBulletPtr> BulletManager::GetAmmo() const
 
 void BulletManager::SetAmmo(uint const & count_bullet)
 {
-  if(count_bullet > 0)
+  if (count_bullet > 0) 
+  {
     m_bullet_list = std::list<TBulletPtr>(count_bullet, TBulletPtr(new Bullet()));
+  }
 }

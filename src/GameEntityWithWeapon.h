@@ -8,9 +8,11 @@ class GameEntityWithWeapon: public GameEntity, public Movable
 {
 public:
   GameEntityWithWeapon() = default;
+
   GameEntityWithWeapon(std::string const & name)
     : GameEntity(name)
   {}
+
   GameEntityWithWeapon(Point2D const & position,
                        std::string const & name,
                        uint const & rate,
@@ -19,13 +21,16 @@ public:
       m_rate(rate),
       m_health(health)
   {}
+
   ~GameEntityWithWeapon() override;
+
   uint GetRate() const;
   uint GetHealth() const;
   BulletManager const & GetBulletManager() const;
   void SetRate(uint const & rate);
   void SetHealth(uint const & health);
   void SetBulletManager(BulletManager const & bulletmanager);
+  
 protected:
   uint m_rate = 0;
   uint m_health = 0;
