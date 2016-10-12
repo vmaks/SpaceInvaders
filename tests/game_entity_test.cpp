@@ -3,6 +3,7 @@
 #include "SpaceShip.h"
 #include "Obstacle.h"
 #include "BulletManager.h"
+#include "Space.h"
 
 TEST(bullet_test, test_construction)
 {
@@ -202,4 +203,26 @@ TEST(spaceship_test, test_construction)
   bm1.SetAmmo(2);
   spaceship2.SetBulletManager(bm1);
   EXPECT_EQ(spaceship2.GetBulletManager().GetAmmo().size(),2);
+}
+
+TEST(space_test, test_construction)
+{
+  Space space1;
+  EXPECT_EQ(space1.GetHeight(),0);
+  EXPECT_EQ(space1.GetWidth(),0);
+  space1.SetHeight(15);
+  EXPECT_EQ(space1.GetHeight(),15);
+  space1.SetWidth(15);
+  EXPECT_EQ(space1.GetWidth(),15);
+
+  Space space2(15,15);
+  EXPECT_EQ(space2.GetHeight(),15);
+  EXPECT_EQ(space2.GetWidth(),15);
+  space2.SetHeight(5);
+  EXPECT_EQ(space2.GetHeight(),5);
+  space2.SetWidth(5);
+  EXPECT_EQ(space2.GetWidth(),5);
+  EXPECT_EQ(space2.GetGameEntity().size(),0);
+  space2.AddGameEntity(pGameEntity(new Bullet()));
+  EXPECT_EQ(space2.GetGameEntity().size(),1);
 }

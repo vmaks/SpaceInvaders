@@ -19,5 +19,5 @@ std::list<pBullet> BulletManager::GetAmmo() const
 void BulletManager::SetAmmo(uint const & count_bullet)
 {
   if(count_bullet > 0)
-    m_bullet_list = std::list<pBullet>(count_bullet,pBullet(new Bullet()));
+    m_bullet_list = std::list<pBullet>(count_bullet, pBullet(new Bullet()));
 }

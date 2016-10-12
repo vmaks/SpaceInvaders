@@ -29,3 +29,8 @@ Space::~Space()
 {
 
 }
+
+std::list<pGameEntity> Space::GetGameEntity() const
+{
+  return m_game_entity_list;
+}
