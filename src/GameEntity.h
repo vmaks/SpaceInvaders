@@ -22,7 +22,6 @@ public:
   std::string GetName() const;
   virtual void Update() = 0;
   Point2D GetPosition() const;
-  void SetName(std::string const & name);
   void SetPosition(Point2D const & point);
 protected:
   Point2D m_position;
