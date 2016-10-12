@@ -1,6 +1,5 @@
 #pragma once
 
-#include <QString>
 #include "point2d.hpp"
 #include <memory>
 
