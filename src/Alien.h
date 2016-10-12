@@ -13,7 +13,7 @@ public:
     : GameEntityWithWeapon(position,"Alien",rate,health),
       m_speed(speed)
   {}
-  virtual ~ Alien();
+  ~Alien() override;
   void Move() override;
   void Update() override;
   uint GetSpeed() const;

@@ -12,7 +12,7 @@ public:
     :GameEntity(position,"Obstacle"),
       m_health(health)
   {}
-  virtual ~Obstacle();
+  ~Obstacle() override;
   void Update() override;
   uint GetHealth() const;
   void SetHealth(uint const & health);

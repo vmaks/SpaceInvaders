@@ -11,7 +11,7 @@ public:
     :GameEntity(position,"Bullet"),
       m_damage(damage)
   {}
-  virtual ~Bullet();
+  ~Bullet() override;
   void Update() override;
   void Move() override;
   uint GetDamage() const;
@@ -20,4 +20,4 @@ private:
   uint m_damage = 0;
 };
 
-typedef std::shared_ptr<Bullet> pBullet;
+using TBulletPtr = std::shared_ptr<Bullet>;
