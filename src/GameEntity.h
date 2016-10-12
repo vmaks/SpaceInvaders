@@ -1,7 +1,7 @@
 #pragma once
 
-#include "point2d.hpp"
 #include <memory>
+#include "point2d.hpp"
 
 class GameEntity {
 

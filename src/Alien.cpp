@@ -1,5 +1,5 @@
-#include "Alien.h"
 #include <stdexcept>
+#include "Alien.h"
 
 Alien::~ Alien()
 {

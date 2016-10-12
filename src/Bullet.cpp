@@ -1,5 +1,5 @@
-#include "Bullet.h"
 #include <stdexcept>
+#include "Bullet.h"
 
 Bullet::~Bullet()
 {

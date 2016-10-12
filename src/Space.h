@@ -1,7 +1,7 @@
 #pragma once
 
-#include "GameEntity.h"
 #include <list>
+#include "GameEntity.h"
 
 class Space
 {
