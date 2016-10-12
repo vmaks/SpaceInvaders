@@ -3,8 +3,8 @@
 #include <memory>
 #include "point2d.hpp"
 
-class GameEntity {
-
+class GameEntity 
+{
 public:
   GameEntity() = default;
   GameEntity(std::string const & name)
@@ -19,13 +19,14 @@ public:
       m_name(obj.m_name)
   {}
   virtual ~GameEntity();
-  std::string GetName() const;
+  std::string const & GetName() const;
   virtual void Update() = 0;
-  Point2D GetPosition() const;
+  Point2D const & GetPosition() const;
   void SetPosition(Point2D const & point);
 protected:
   Point2D m_position;
   std::string m_name;
 };
 
-typedef std::shared_ptr<GameEntity> pGameEntity;
+using TGameEntityPtr = std::shared_ptr<GameEntity>;
+using TGameEntityConstPtr = std::shared_ptr<const GameEntity>;

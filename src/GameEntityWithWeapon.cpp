@@ -27,10 +27,10 @@ GameEntityWithWeapon::~GameEntityWithWeapon()
 
 void GameEntityWithWeapon::SetBulletManager(BulletManager const & bulletmanager)
 {
-  m_bullet_manager = bulletmanager;
+  m_bulletManager = bulletmanager;
 }
 
-BulletManager GameEntityWithWeapon::GetBulletManager() const
+BulletManager const & GameEntityWithWeapon::GetBulletManager() const
 {
-  return m_bullet_manager;
+  return m_bulletManager;
 }

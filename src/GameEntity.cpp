@@ -1,11 +1,11 @@
 #include "GameEntity.h"
 
-std::string GameEntity::GetName() const
+std::string const & GameEntity::GetName() const
 {
   return m_name;
 }
 
-Point2D GameEntity::GetPosition() const
+Point2D const & GameEntity::GetPosition() const
 {
   return m_position;
 }

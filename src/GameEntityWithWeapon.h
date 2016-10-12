@@ -19,15 +19,15 @@ public:
       m_rate(rate),
       m_health(health)
   {}
-  virtual ~GameEntityWithWeapon();
+  ~GameEntityWithWeapon() override;
   uint GetRate() const;
   uint GetHealth() const;
-  BulletManager GetBulletManager() const;
+  BulletManager const & GetBulletManager() const;
   void SetRate(uint const & rate);
   void SetHealth(uint const & health);
   void SetBulletManager(BulletManager const & bulletmanager);
 protected:
   uint m_rate = 0;
   uint m_health = 0;
-  BulletManager m_bullet_manager;
+  BulletManager m_bulletManager;
 };
