@@ -3,5 +3,6 @@
 class Movable
 {
 public:
-    virtual void Move() = 0;
+  virtual ~Movable() = default;
+  virtual void Move() = 0;
 };
