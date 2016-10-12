@@ -15,3 +15,8 @@ void Bullet::Update()
 {
   std::runtime_error("Not implemented");
 }
+
+void Bullet::Move()
+{
+  std::runtime_error("Not implemented");
+}

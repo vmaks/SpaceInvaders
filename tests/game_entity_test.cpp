@@ -34,6 +34,15 @@ TEST(bullet_test, test_construction)
       EXPECT_EQ(ex.what(),std::string("Not implemented"));
   }
 
+  try
+  {
+      bullet2.Move();
+  }
+  catch(std::exception const & ex)
+  {
+    std::cout << ex.what() << std::endl;
+      EXPECT_EQ(ex.what(),std::string("Not implemented"));
+  }
 }
 
 TEST(bulletmanager_test, test_construction)

@@ -1,6 +1,7 @@
 #include "GameEntity.h"
+#include "Movable.h"
 
-class Bullet: public GameEntity
+class Bullet: public GameEntity, public Movable
 {
 public:
   Bullet()
@@ -11,6 +12,7 @@ public:
       m_damage(damage)
   {}
   void Update() override;
+  void Move() override;
   uint GetDamage() const;
   void SetDamage(uint const & damage);
 private:
