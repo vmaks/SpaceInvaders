@@ -17,5 +17,5 @@ public:
   uint GetHealth() const;
   void SetHealth(uint const & health);
 private:
-  uint m_health;
+  uint m_health = 0;
 };
