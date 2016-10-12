@@ -20,9 +20,9 @@ void Space::SetHeight(uint const & height)
   m_height = height;
 }
 
-void Space::AddGameEntity(const pGameEntity &gameEntity)
+void Space::AddGameEntity(TGameEntityConstPtr gameEntity)
 {
-  m_game_entity_list.push_back(gameEntity);
+  m_gameEntityList.push_back(gameEntity);
 }
 
 Space::~Space()
@@ -30,7 +30,7 @@ Space::~Space()
 
 }
 
-std::list<pGameEntity> Space::GetGameEntity() const
+std::list<TGameEntityConstPtr> Space::GetGameEntity() const
 {
-  return m_game_entity_list;
+  return m_gameEntityList;
 }

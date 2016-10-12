@@ -223,6 +223,6 @@ TEST(space_test, test_construction)
   space2.SetWidth(5);
   EXPECT_EQ(space2.GetWidth(),5);
   EXPECT_EQ(space2.GetGameEntity().size(),0);
-  space2.AddGameEntity(pGameEntity(new Bullet()));
+  space2.AddGameEntity(TGameEntityConstPtr(new Bullet()));
   EXPECT_EQ(space2.GetGameEntity().size(),1);
 }

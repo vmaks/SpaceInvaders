@@ -16,10 +16,10 @@ public:
   uint GetHeight() const;
   void SetWidth(uint const & width);
   void SetHeight(uint const & height);
-  std::list<pGameEntity> GetGameEntity() const;
-  void AddGameEntity(pGameEntity const & gameEntity);
+  std::list<TGameEntityConstPtr> GetGameEntity() const;
+  void AddGameEntity(TGameEntityConstPtr gameEntity);
 private:
   uint m_width = 0;
   uint m_height = 0;
-  std::list<pGameEntity> m_game_entity_list;
+  std::list<TGameEntityConstPtr> m_gameEntityList;
 };

@@ -7,10 +7,10 @@ class BulletManager
 {
 public:
   BulletManager() = default;
-  virtual ~BulletManager();
+  ~BulletManager();
   void Fire();
-  std::list<pBullet> GetAmmo() const;
+  std::list<TBulletPtr> GetAmmo() const;
   void SetAmmo(uint const & count_bullet);
 private:
-  std::list<pBullet> m_bullet_list;
+  std::list<TBulletPtr> m_bullet_list;
 };
