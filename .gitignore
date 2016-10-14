@@ -73,3 +73,7 @@ Thumbs.db
 # Custom
 .idea/
 CMakeLists.txt.user
+
+# Additional folders
+.vscode/
+build/
