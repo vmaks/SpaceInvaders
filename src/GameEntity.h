@@ -35,4 +35,4 @@ protected:
 };
 
 using TGameEntityPtr = std::shared_ptr<GameEntity>;
-using TGameEntityConstPtr = std::shared_ptr<const GameEntity>;
+using TGameEntityConstPtr = std::shared_ptr<GameEntity const>;
