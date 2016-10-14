@@ -19,7 +19,7 @@ public:
   uint GetHeight() const;
   void SetWidth(uint const & width);
   void SetHeight(uint const & height);
-  std::list<TGameEntityConstPtr> GetGameEntity() const;
+  std::list<TGameEntityConstPtr> const & GetGameEntity() const;
   void AddGameEntity(TGameEntityConstPtr gameEntity);
   
 private:

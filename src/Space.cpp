@@ -30,7 +30,7 @@ Space::~Space()
 
 }
 
-std::list<TGameEntityConstPtr> Space::GetGameEntity() const
+std::list<TGameEntityConstPtr> const & Space::GetGameEntity() const
 {
   return m_gameEntityList;
 }
