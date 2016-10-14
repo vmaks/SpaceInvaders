@@ -7,21 +7,21 @@ BulletManager::~BulletManager()
 
 void BulletManager::Fire()
 {
-  if (not m_bullet_list.empty())
+  if (not m_bulletList.empty())
   {
-    m_bullet_list.pop_front();
+    m_bulletList.pop_front();
   }
 }
 
 std::list<TBulletPtr> BulletManager::GetAmmo() const
 {
-  return m_bullet_list;
+  return m_bulletList;
 }
 
 void BulletManager::SetAmmo(uint const & count_bullet)
 {
   if (count_bullet > 0) 
   {
-    m_bullet_list = std::list<TBulletPtr>(count_bullet, TBulletPtr(new Bullet()));
+    m_bulletList = std::list<TBulletPtr>(count_bullet, TBulletPtr(new Bullet()));
   }
 }

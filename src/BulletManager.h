@@ -15,5 +15,5 @@ public:
   void SetAmmo(uint const & count_bullet);
 
 private:
-  std::list<TBulletPtr> m_bullet_list;
+  std::list<TBulletPtr> m_bulletList;
 };
