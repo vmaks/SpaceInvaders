@@ -13,7 +13,7 @@ void BulletManager::Fire()
   }
 }
 
-std::list<TBulletPtr> BulletManager::GetAmmo() const
+std::list<TBulletPtr> BulletManager::GetBullets() const
 {
   return m_bulletList;
 }

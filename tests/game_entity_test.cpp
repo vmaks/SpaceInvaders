@@ -49,24 +49,24 @@ TEST(bullet_test, test_construction)
 TEST(bulletmanager_test, test_construction)
 {
   BulletManager bulletManager1;
-  EXPECT_EQ(bulletManager1.GetAmmo().empty(),true);
+  EXPECT_EQ(bulletManager1.GetBullets().empty(),true);
   bulletManager1.SetAmmo(2);
-  EXPECT_EQ(bulletManager1.GetAmmo().size(),2);
+  EXPECT_EQ(bulletManager1.GetBullets().size(),2);
 
-  EXPECT_EQ(bulletManager1.GetAmmo().front()->GetName(),"Bullet");
-  EXPECT_EQ(bulletManager1.GetAmmo().front()->GetDamage(),0);
-  EXPECT_EQ(bulletManager1.GetAmmo().front()->GetPosition(),Point2D(0.0f, 0.0f));
-  bulletManager1.GetAmmo().front()->SetDamage(16);
-  EXPECT_EQ(bulletManager1.GetAmmo().front()->GetDamage(),16);
-  bulletManager1.GetAmmo().front()->SetPosition(Point2D(2.0f, 2.0f));
-  EXPECT_EQ(bulletManager1.GetAmmo().front()->GetPosition(),Point2D(2.0f, 2.0f));
+  EXPECT_EQ(bulletManager1.GetBullets().front()->GetName(),"Bullet");
+  EXPECT_EQ(bulletManager1.GetBullets().front()->GetDamage(),0);
+  EXPECT_EQ(bulletManager1.GetBullets().front()->GetPosition(),Point2D(0.0f, 0.0f));
+  bulletManager1.GetBullets().front()->SetDamage(16);
+  EXPECT_EQ(bulletManager1.GetBullets().front()->GetDamage(),16);
+  bulletManager1.GetBullets().front()->SetPosition(Point2D(2.0f, 2.0f));
+  EXPECT_EQ(bulletManager1.GetBullets().front()->GetPosition(),Point2D(2.0f, 2.0f));
 
   bulletManager1.Fire();
-  EXPECT_EQ(bulletManager1.GetAmmo().size(),1);
+  EXPECT_EQ(bulletManager1.GetBullets().size(),1);
   bulletManager1.Fire();
-  EXPECT_EQ(bulletManager1.GetAmmo().size(),0);
+  EXPECT_EQ(bulletManager1.GetBullets().size(),0);
   bulletManager1.Fire();
-  EXPECT_EQ(bulletManager1.GetAmmo().size(),0);
+  EXPECT_EQ(bulletManager1.GetBullets().size(),0);
 }
 
 TEST(obstacle_test, test_construction)
@@ -198,11 +198,11 @@ TEST(spaceship_test, test_construction)
   EXPECT_EQ(spaceship2.GetPosition(),Point2D(2.0f, 2.0f));
   spaceship2.SetRate(16);
   EXPECT_EQ(spaceship2.GetRate(),16);
-  EXPECT_EQ(spaceship2.GetBulletManager().GetAmmo().empty(),true);
+  EXPECT_EQ(spaceship2.GetBulletManager().GetBullets().empty(),true);
   BulletManager bm1;
   bm1.SetAmmo(2);
   spaceship2.SetBulletManager(bm1);
-  EXPECT_EQ(spaceship2.GetBulletManager().GetAmmo().size(),2);
+  EXPECT_EQ(spaceship2.GetBulletManager().GetBullets().size(),2);
 }
 
 TEST(space_test, test_construction)

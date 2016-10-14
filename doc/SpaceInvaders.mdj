@@ -1709,7 +1709,7 @@
 											"height": 16,
 											"autoResize": false,
 											"underline": false,
-											"text": "+GetAmmo()",
+											"text": "+GetBullets()",
 											"horizontalAlignment": 0,
 											"verticalAlignment": 5
 										},
@@ -6822,7 +6822,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFXsGRMZGXEzSc="
 							},
-							"name": "GetAmmo",
+							"name": "GetBullets",
 							"visibility": "public",
 							"isStatic": false,
 							"isLeaf": false,

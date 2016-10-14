@@ -11,7 +11,7 @@ public:
   ~BulletManager();
   
   void Fire();
-  std::list<TBulletPtr> GetAmmo() const;
+  std::list<TBulletPtr> GetBullets() const;
   void SetAmmo(uint const & count_bullet);
 
 private:
