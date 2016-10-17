@@ -1,9 +1,9 @@
 #include "gtest/gtest.h"
-#include "Alien.h"
-#include "SpaceShip.h"
-#include "Obstacle.h"
-#include "BulletManager.h"
-#include "Space.h"
+#include "alien.h"
+#include "space_ship.h"
+#include "obstacle.h"
+#include "bullet_manager.h"
+#include "space.h"
 
 TEST(bullet_test, test_construction)
 {

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "GameEntity.h"
-#include "Movable.h"
-#include "BulletManager.h"
+#include "game_entity.h"
+#include "movable.h"
+#include "bullet_manager.h"
 
 class GameEntityWithWeapon: public GameEntity, public Movable
 {

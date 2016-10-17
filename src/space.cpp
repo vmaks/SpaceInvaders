@@ -1,4 +1,4 @@
-#include "Space.h"
+#include "space.h"
 
 uint Space::GetWidth() const
 {

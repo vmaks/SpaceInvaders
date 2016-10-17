@@ -1,5 +1,5 @@
 #include <stdexcept>
-#include "SpaceShip.h"
+#include "space_ship.h"
 
 void SpaceShip::Update()
 {

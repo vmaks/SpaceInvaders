@@ -1,5 +1,5 @@
-#include "GameEntity.h"
-#include "Movable.h"
+#include "game_entity.h"
+#include "movable.h"
 
 class Bullet: public GameEntity, public Movable
 {

@@ -1,4 +1,4 @@
-#include "BulletManager.h"
+#include "bullet_manager.h"
 
 BulletManager::~BulletManager()
 {

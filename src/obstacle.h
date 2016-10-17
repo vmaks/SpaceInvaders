@@ -1,6 +1,6 @@
 #pragma once
 
-#include "GameEntity.h"
+#include "game_entity.h"
 
 class Obstacle: public GameEntity
 {

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "GameEntityWithWeapon.h"
+#include "game_entity_with_weapon.h"
 
 class SpaceShip: public GameEntityWithWeapon
 {

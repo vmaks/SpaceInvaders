@@ -1,5 +1,5 @@
 #include <stdexcept>
-#include "Obstacle.h"
+#include "obstacle.h"
 
 Obstacle::~Obstacle()
 {
