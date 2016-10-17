@@ -1,5 +1,6 @@
 #include "gtest/gtest.h"
 #include "box2d.hpp"
+#include "except.hpp"
 
 TEST(box2d_test, test_construction)
 {
@@ -15,10 +16,8 @@ TEST(box2d_test, test_construction)
   {
       Box2D::createBox(Point2D(1.0f, 2.0f), Point2D(1.0f, -8.0f));
   }
-  catch(std::exception const & ex)
+  catch(std::invalid_argument const & ex)
   {
-    std::cout << ex.what() << std::endl;
-      EXPECT_EQ(ex.what(),std::string("You must create a correct box!"));
   }
 
   Box2D box3 = box2;

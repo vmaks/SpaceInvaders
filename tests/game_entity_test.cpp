@@ -4,6 +4,7 @@
 #include "obstacle.h"
 #include "bullet_manager.h"
 #include "space.h"
+#include "except.hpp"
 
 TEST(bullet_test, test_construction)
 {
@@ -29,20 +30,16 @@ TEST(bullet_test, test_construction)
   {
       bullet2.Update();
   }
-  catch(std::exception const & ex)
+  catch(NotImplementedException const & ex)
   {
-    std::cout << ex.what() << std::endl;
-      EXPECT_EQ(ex.what(),std::string("Not implemented"));
   }
 
   try
   {
       bullet2.Move();
   }
-  catch(std::exception const & ex)
+  catch(NotImplementedException const & ex)
   {
-    std::cout << ex.what() << std::endl;
-      EXPECT_EQ(ex.what(),std::string("Not implemented"));
   }
 }
 
@@ -93,10 +90,8 @@ TEST(obstacle_test, test_construction)
   {
       obstacle2.Update();
   }
-  catch(std::exception const & ex)
+  catch(NotImplementedException const & ex)
   {
-    std::cout << ex.what() << std::endl;
-      EXPECT_EQ(ex.what(),std::string("Not implemented"));
   }
 }
 
@@ -121,20 +116,16 @@ TEST(alien_test, test_construction)
   {
       alien1.Update();
   }
-  catch(std::exception const & ex)
+  catch(NotImplementedException const & ex)
   {
-    std::cout << ex.what() << std::endl;
-      EXPECT_EQ(ex.what(),std::string("Not implemented"));
   }
 
   try
   {
       alien1.Move();
   }
-  catch(std::exception const & ex)
+  catch(NotImplementedException const & ex)
   {
-    std::cout << ex.what() << std::endl;
-      EXPECT_EQ(ex.what(),std::string("Not implemented"));
   }
 
   Alien alien2;
@@ -171,20 +162,16 @@ TEST(spaceship_test, test_construction)
   {
       spaceship1.Update();
   }
-  catch(std::exception const & ex)
+  catch(NotImplementedException const & ex)
   {
-    std::cout << ex.what() << std::endl;
-      EXPECT_EQ(ex.what(),std::string("Not implemented"));
   }
 
   try
   {
       spaceship1.Move();
   }
-  catch(std::exception const & ex)
+  catch(NotImplementedException const & ex)
   {
-    std::cout << ex.what() << std::endl;
-      EXPECT_EQ(ex.what(),std::string("Not implemented"));
   }
 
   SpaceShip spaceship2;

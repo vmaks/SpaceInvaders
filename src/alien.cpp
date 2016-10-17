@@ -1,5 +1,6 @@
-#include <stdexcept>
+#include "except.hpp"
 #include "alien.h"
+
 
 Alien::~ Alien()
 {
@@ -8,12 +9,12 @@ Alien::~ Alien()
 
 void Alien::Move()
 {
-  std::runtime_error("Not implemented");
+  throw NotImplementedException();
 }
 
 void Alien::Update()
 {
-  std::runtime_error("Not implemented");
+  throw NotImplementedException();
 }
 
 uint Alien::GetSpeed() const

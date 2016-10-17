@@ -1,14 +1,15 @@
-#include <stdexcept>
+#include "except.hpp"
 #include "space_ship.h"
+
 
 void SpaceShip::Update()
 {
-  std::runtime_error("Not implemented");
+  throw NotImplementedException();
 }
 
 void SpaceShip::Move()
 {
-  std::runtime_error("Not implemented");
+  throw NotImplementedException();
 }
 
 SpaceShip::~SpaceShip()

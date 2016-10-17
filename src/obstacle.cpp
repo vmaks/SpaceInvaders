@@ -1,5 +1,7 @@
 #include <stdexcept>
+#include "except.hpp"
 #include "obstacle.h"
+
 
 Obstacle::~Obstacle()
 {
@@ -18,5 +20,5 @@ void Obstacle::SetHealth(uint const & health)
 
 void Obstacle::Update()
 {
-  std::runtime_error("Not implemented");
+  throw NotImplementedException();
 }
