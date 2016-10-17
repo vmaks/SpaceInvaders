@@ -14,8 +14,8 @@ public:
 
   Box2D(Box2D && obj);
 
-  Point2D & boxMin() { return m_boxMin; }
-  Point2D & boxMax() { return m_boxMax; }
+ void setBoxMin(Point2D value) { m_boxMin = value; } 
+ void SetBoxMax(Point2D value) { m_boxMax = value; } 
 
   Point2D const & boxMin() const { return m_boxMin; }
   Point2D const & boxMax() const { return m_boxMax; }
