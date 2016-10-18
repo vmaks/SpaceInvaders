@@ -1,7 +1,7 @@
 #include "except.hpp"
 
 
-const char* NotImplementedException::what() const throw()
+const char* NotImplementedException::what() const noexcept
 {
   return "Not implemented";
 }
