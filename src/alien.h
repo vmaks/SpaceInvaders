@@ -25,3 +25,6 @@ public:
 private:
   uint m_speed = 0;
 };
+
+std::ostream & operator << (std::ostream & os,
+                            Alien const & obj);

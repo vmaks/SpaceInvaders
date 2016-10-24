@@ -40,7 +40,6 @@ public:
 
   static Box2D createBox(Point2D const & minPoint,
                          Point2D const & maxPoint);
-
 private:
 
   Box2D(Point2D const & minPoint,
@@ -51,3 +50,6 @@ private:
   Point2D m_boxMin = { 0.0f, 0.0f };
   Point2D m_boxMax = { 1.0f, 1.0f };
 };
+
+std::ostream & operator << (std::ostream & os,
+                            Box2D const & obj);

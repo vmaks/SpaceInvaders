@@ -22,3 +22,10 @@ void Obstacle::Update()
 {
   throw NotImplementedException();
 }
+
+std::ostream & operator << (std::ostream & os,
+                           const Obstacle &obj)
+{
+  os << "Obstacle {Position: " << obj.GetPosition() << " Health: " << obj.GetHealth() << "} ";
+  return os;
+}

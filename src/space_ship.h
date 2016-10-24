@@ -20,3 +20,6 @@ public:
   void Update() override;
   void Move() override;
 };
+
+std::ostream & operator << (std::ostream & os,
+                            SpaceShip const & obj);

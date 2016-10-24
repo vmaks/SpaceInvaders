@@ -25,3 +25,14 @@ void BulletManager::SetAmmo(uint const & count_bullet)
     m_bulletList = std::list<TBulletPtr>(count_bullet, TBulletPtr(new Bullet()));
   }
 }
+
+std::ostream & operator << (std::ostream & os,
+                           const BulletManager &obj)
+{
+  os << "BulletManager [";
+  auto bullets = obj.GetBullets();
+  for(TBulletPtr const & bullet : bullets)
+    os << *bullet << " ";
+  os << "] ";
+  return os;
+}

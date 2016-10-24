@@ -17,3 +17,6 @@ public:
 private:
   std::list<TBulletPtr> m_bulletList;
 };
+
+std::ostream & operator << (std::ostream & os,
+                            BulletManager const & obj);

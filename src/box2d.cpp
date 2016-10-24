@@ -75,3 +75,11 @@ Box2D Box2D::createBox(Point2D const & minPoint,
   }
   return Box2D(min, max);
 }
+
+std::ostream & operator << (std::ostream & os,
+                           Box2D const & obj)
+{
+  os << "Box2D [BoxMin: " << obj.boxMin() << "; "
+     << "BoxMax: " << obj.boxMax() << "] ";
+  return os;
+}
