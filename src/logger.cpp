@@ -1,35 +1,35 @@
 #include "logger.h"
 
-Logger::Logger(typelog const & type)
+Logger::Logger(TypeLog const & type)
 {
-  msglevel = type;
-  std::cout << "[" << getLabel(type) << "] ";
+  m_msgLevel = type;
+  std::cout << "[" << GetLabel(type) << "] ";
 }
 
 Logger::~Logger()
 {
-  if(opened)
+  if(m_isOpened)
   {
     std::cout << std::endl;
   }
-  opened = false;
+  m_isOpened = false;
 }
 
-std::string Logger::getLabel(typelog const & type) const
+std::string Logger::GetLabel(TypeLog const & type) const
 {
   std::string label;
   switch(type)
   {
-    case DEBUG:
+    case TypeLog::DEBUG:
       label = "DEBUG";
       break;
-    case INFO:
+    case TypeLog::INFO:
       label = "INFO";
       break;
-    case WARN:
+    case TypeLog::WARN:
       label = "WARNING";
       break;
-    case ERROR:
+    case TypeLog::ERROR:
       label = "ERROR";
       break;
   }

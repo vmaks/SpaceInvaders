@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-enum typelog
+enum class TypeLog
 {
   DEBUG,
   INFO,
@@ -16,7 +16,7 @@ class Logger
 public:
   Logger() = default;
 
-  Logger(typelog const & type);
+  Logger(TypeLog const & type);
 
   ~Logger();
 
@@ -24,21 +24,23 @@ public:
   Logger & operator << (T const & obj)
   {
     std::cout << obj;
-    opened = true;
+    m_isOpened = true;
     return *this;
   }
 
-  template<typename T, template<typename,typename...> class C, typename... Args>
+  template<typename T, template<typename, typename...> class C, typename... Args>
   Logger & operator << (C<T, Args...> const & objs)
   {
     for(auto const & obj:objs)
+    {
       std::cout << obj << " ";
-    opened = true;
+    }
+    m_isOpened = true;
     return *this;
   }
 
 private:
-  bool opened = false;
-  typelog msglevel = DEBUG;
-  std::string getLabel(typelog const & type) const;
+  bool m_isOpened = false;
+  TypeLog m_msgLevel = TypeLog::DEBUG;
+  std::string GetLabel(TypeLog const & type) const;
 };
