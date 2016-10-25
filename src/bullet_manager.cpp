@@ -20,19 +20,21 @@ std::list<TBulletPtr> BulletManager::GetBullets() const
 
 void BulletManager::SetAmmo(uint const & count_bullet)
 {
-  if (count_bullet > 0) 
+  if (count_bullet > 0)
   {
     m_bulletList = std::list<TBulletPtr>(count_bullet, TBulletPtr(new Bullet()));
   }
 }
 
 std::ostream & operator << (std::ostream & os,
-                           const BulletManager &obj)
+                            const BulletManager & obj)
 {
   os << "BulletManager [";
   auto bullets = obj.GetBullets();
   for(TBulletPtr const & bullet : bullets)
-    os << *bullet << " ";
-  os << "] ";
+  {
+    os << *bullet;
+  }
+  os << "]";
   return os;
 }

@@ -219,21 +219,21 @@ TEST(space_test, test_output)
 {
   std::stringstream s;
   s << Space();
-  EXPECT_EQ(s.str(), "Space {Height: 0 Width: 0} ");
+  EXPECT_EQ(s.str(), "Space [Height: 0; Width: 0]");
 }
 
 TEST(alien_test, test_output)
 {
   std::stringstream s;
   s << Alien();
-  EXPECT_EQ(s.str(), "Alien {Position: Point2D {0, 0} Rate: 0 Health: 0 Speed: 0} ");
+  EXPECT_EQ(s.str(), "Alien [Position: Point2D {0, 0}; Rate: 0; Health: 0; Speed: 0]");
 }
 
 TEST(bullet_test, test_output)
 {
   std::stringstream s;
   s << Bullet();
-  EXPECT_EQ(s.str(), "Bullet {Position: Point2D {0, 0} Damage: 0} ");
+  EXPECT_EQ(s.str(), "Bullet [Position: Point2D {0, 0}; Damage: 0]");
 }
 
 TEST(bulletmanager_test, test_output)
@@ -242,19 +242,19 @@ TEST(bulletmanager_test, test_output)
   bm.SetAmmo(2);
   std::stringstream s;
   s << bm;
-  EXPECT_EQ(s.str(), "BulletManager [Bullet {Position: Point2D {0, 0} Damage: 0}  Bullet {Position: Point2D {0, 0} Damage: 0}  ] ");
+  EXPECT_EQ(s.str(), "BulletManager [Bullet [Position: Point2D {0, 0}; Damage: 0]Bullet [Position: Point2D {0, 0}; Damage: 0]]");
 }
 
 TEST(spaceship_test, test_output)
 {
   std::stringstream s;
   s << SpaceShip();
-  EXPECT_EQ(s.str(), "SpaceShip {Position: Point2D {0, 0} Rate: 0 Health: 0} ");
+  EXPECT_EQ(s.str(), "SpaceShip [Position: Point2D {0, 0}; Rate: 0; Health: 0]");
 }
 
 TEST(obstacle_test, test_output)
 {
   std::stringstream s;
   s << Obstacle();
-  EXPECT_EQ(s.str(), "Obstacle {Position: Point2D {0, 0} Health: 0} ");
+  EXPECT_EQ(s.str(), "Obstacle [Position: Point2D {0, 0}; Health: 0]");
 }

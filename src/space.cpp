@@ -36,8 +36,9 @@ std::list<TGameEntityConstPtr> const & Space::GetGameEntity() const
 }
 
 std::ostream & operator << (std::ostream & os,
-                           const Space &obj)
+                            const Space & obj)
 {
-  os << "Space {Height: " << obj.GetHeight() << " Width: " << obj.GetWidth() << "} ";
+  os << "Space [Height: " << obj.GetHeight()
+     << "; Width: " << obj.GetWidth() << "]";
   return os;
 }

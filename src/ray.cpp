@@ -260,6 +260,6 @@ std::ostream & operator << (std::ostream & os,
                            Ray const & rhs)
 {
   os << "Ray [origin: " << rhs.origin() << "; "
-     << "direction: " << rhs.direction() << "] ";
+     << "direction: " << rhs.direction() << "]";
   return os;
 }

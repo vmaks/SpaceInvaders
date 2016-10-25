@@ -18,9 +18,10 @@ SpaceShip::~SpaceShip()
 }
 
 std::ostream & operator << (std::ostream & os,
-                           const SpaceShip &obj)
+                            const SpaceShip & obj)
 {
-  os << "SpaceShip {Position: " << obj.GetPosition() << " Rate: "
-     << obj.GetRate() << " Health: " << obj.GetHealth() << "} ";
+  os << "SpaceShip [Position: " << obj.GetPosition()
+     << "; Rate: " << obj.GetRate()
+     << "; Health: " << obj.GetHealth() << "]";
   return os;
 }

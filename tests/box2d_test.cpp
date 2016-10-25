@@ -109,5 +109,5 @@ TEST(box2d_test, test_output)
 {
   std::stringstream s;
   s << Box2D::createBox(Point2D(0.0f, 0.0f), Point2D(1.0f, 1.0f));
-  EXPECT_EQ(s.str(), "Box2D [BoxMin: Point2D {0, 0}; BoxMax: Point2D {1, 1}] ");
+  EXPECT_EQ(s.str(), "Box2D [BoxMin: Point2D {0, 0}; BoxMax: Point2D {1, 1}]");
 }

@@ -24,12 +24,13 @@ void Bullet::Update()
 
 void Bullet::Move()
 {
-  throw NotImplementedException();  
+  throw NotImplementedException();
 }
 
 std::ostream & operator << (std::ostream & os,
-                           const Bullet &obj)
+                            const Bullet & obj)
 {
-  os << "Bullet {Position: " << obj.GetPosition() << " Damage: " << obj.GetDamage() << "} ";
+  os << "Bullet [Position: " << obj.GetPosition()
+     << "; Damage: " << obj.GetDamage() << "]";
   return os;
 }
