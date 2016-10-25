@@ -10,10 +10,10 @@
 TEST(logger_test, output_std_container)
 {
   Logger(TypeLog::WARN) << "warning";
-  Logger() << std::list<int>{2,3,4};
-  Logger(TypeLog::ERROR) <<  std::vector<Bullet>(3,Bullet());
+  Logger() << std::list<int>{2, 3, 4};
+  Logger(TypeLog::ERROR) <<  std::vector<Bullet>(3, Bullet());
   Logger() << 5;
-  Logger() << Alien() << SpaceShip() << Space(15,14);
+  Logger() << Alien() << SpaceShip() << Space(15, 14);
   BulletManager bm;
   bm.SetAmmo(2);
   Logger() << Obstacle();
