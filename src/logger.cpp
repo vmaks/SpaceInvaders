@@ -3,7 +3,6 @@
 Logger::Logger(TypeLog const & type)
 {
   m_msgLevel = type;
-  std::cout << "[" << GetLabel(type) << "] ";
 }
 
 Logger::~Logger()

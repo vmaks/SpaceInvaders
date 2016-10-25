@@ -23,7 +23,7 @@ public:
   template<class T>
   Logger & operator << (T const & obj)
   {
-    std::cout << obj;
+    std::cout << "[" << GetLabel(m_msgLevel) << "] " << obj;
     m_isOpened = true;
     return *this;
   }
@@ -31,6 +31,8 @@ public:
   template<typename T, template<typename, typename...> class C, typename... Args>
   Logger & operator << (C<T, Args...> const & objs)
   {
+    std::cout << "[" << GetLabel(m_msgLevel) << "] ";
+
     for(auto const & obj:objs)
     {
       std::cout << obj << " ";
