@@ -4,31 +4,71 @@
 
 
 /// Log level.
-enum class TypeLog
+enum class LogLevel
 {
-  DEBUG,
-  INFO,
-  WARN,
-  ERROR
+  trace,
+  debug,
+  info,
+  warning,
+  error,
+  fatal
 };
 
 
-/// It is used to output information to the screen or a file.
+/// It is used to output information
+/// to the screen or a file.
 class Logger
 {
 public:
-  Logger() = default;
+  static Logger & GetLogger(
+      LogLevel level)
+  {
+    static Logger logger;
 
-  Logger(TypeLog const & type);
+    if (level >= m_msgLevel) {
+      m_isPrint = true;
 
-  ~Logger();
+      std::cout << "[" << GetLabel(m_msgLevel) << "] ";
+    } else {
+      m_isPrint = false;
+    }
+
+    return logger;
+  }
+
+  /// Set the current log level.
+  static void SetLevel(LogLevel const & type)
+  {
+    m_msgLevel = type;
+  }
+
+  /// Get the current log level.
+  static std::string GetLabel(LogLevel const & type);
+
+  /// It simply output a message with a log level.
+  static void Log(LogLevel const & logLevel,
+                  std::string const & message)
+  {
+    if (logLevel >= m_msgLevel)
+    {
+      std::cout << message << std::endl;
+    }
+  }
+
+  static LogLevel GetLogLevel()
+  {
+    return m_msgLevel;
+  }
 
   /// Output an object to the screen.
   template<class T>
   Logger & operator << (T const & obj)
   {
-    std::cout << "[" << GetLabel(m_msgLevel) << "] " << obj;
-    m_isOpened = true;
+    if (m_isPrint)
+    {
+      std::cout << obj;
+    }
+
     return *this;
   }
 
@@ -36,24 +76,22 @@ public:
   template<typename T, template<typename, typename...> class C, typename... Args>
   Logger & operator << (C<T, Args...> const & objs)
   {
-    std::cout << "[" << GetLabel(m_msgLevel) << "] ";
-
-    for(auto const & obj:objs)
+    if (m_isPrint)
     {
-      std::cout << obj << " ";
+      for (auto const & obj : objs)
+      {
+        std::cout << obj << " ";
+      }
     }
-    m_isOpened = true;
+
     return *this;
   }
 
-private:
-  /// It is used to output buffer to the screen
-  /// when the Logger is destroyed.
-  bool m_isOpened = false;
+private:  
+  Logger() = default;
 
   /// It is used to store the current log level.
-  TypeLog m_msgLevel = TypeLog::DEBUG;
+  static LogLevel m_msgLevel;
 
-  /// Get the current log level.
-  std::string GetLabel(TypeLog const & type) const;
+  static bool m_isPrint;
 };
