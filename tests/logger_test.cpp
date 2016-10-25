@@ -1,12 +1,12 @@
 #include "list"
 #include "gtest/gtest.h"
 
-#include "logger.h"
-#include "alien.h"
-#include "space_ship.h"
-#include "obstacle.h"
-#include "bullet_manager.h"
-#include "space.h"
+#include "logger.hpp"
+#include "alien.hpp"
+#include "space_ship.hpp"
+#include "obstacle.hpp"
+#include "bullet_manager.hpp"
+#include "space.hpp"
 
 
 TEST(logger_test, logger_1)

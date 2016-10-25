@@ -1,5 +1,5 @@
 #include "except.hpp"
-#include "space_ship.h"
+#include "space_ship.hpp"
 
 
 void SpaceShip::Update()

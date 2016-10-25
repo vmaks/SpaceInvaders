@@ -1,7 +1,7 @@
 #pragma once
 
 #include <list>
-#include "bullet.h"
+#include "bullet.hpp"
 
 class BulletManager
 {

@@ -1,6 +1,6 @@
 #include <stdexcept>
 #include "except.hpp"
-#include "obstacle.h"
+#include "obstacle.hpp"
 
 
 Obstacle::~Obstacle()

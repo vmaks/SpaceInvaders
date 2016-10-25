@@ -1,4 +1,4 @@
-#include "game_entity.h"
+#include "game_entity.hpp"
 
 std::string const & GameEntity::GetName() const
 {

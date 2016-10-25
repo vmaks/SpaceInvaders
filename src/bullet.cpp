@@ -1,5 +1,5 @@
 #include "except.hpp"
-#include "bullet.h"
+#include "bullet.hpp"
 
 
 Bullet::~Bullet()

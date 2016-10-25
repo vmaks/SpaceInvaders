@@ -1,4 +1,4 @@
-#include "game_entity_with_weapon.h"
+#include "game_entity_with_weapon.hpp"
 
 class Alien : public GameEntityWithWeapon
 {

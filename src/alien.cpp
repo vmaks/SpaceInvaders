@@ -1,5 +1,5 @@
 #include "except.hpp"
-#include "alien.h"
+#include "alien.hpp"
 
 
 Alien::~ Alien()
