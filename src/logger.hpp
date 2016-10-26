@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <fstream>
 
 
 /// It is used to add function name, line number and file name if needed.
@@ -34,11 +35,37 @@ public:
                             std::string lineNumber = "",
                             std::string const & fileName = "");
 
+  static std::ofstream & GetFile(bool const & isReset = false)
+  {
+    static std::ofstream m_outfile;
+
+    // If a file is opened then just return it.
+    if (m_outfile.is_open()) {
+      return m_outfile;
+    }
+
+    // Clean a file if needed otherwise just open it.
+    if (isReset)
+    {
+      m_outfile.open(m_fileName, std::ios::out | std::ios::trunc);
+      m_outfile.close();
+    }
+    else {
+      m_outfile.open(m_fileName, std::ios::out | std::ios::app);
+    }
+
+    return m_outfile;
+  }
+
   /// Set the current log level.
   static void SetLogLevel(LogLevel const &type);
 
   /// Set output option.
-  static void SetPrintFunctionName(bool const &isPrintFunctionName);
+  static void SetPrintToFile(std::string const & fileName,
+                             bool const & isPrintToFile = false);
+
+  /// Set output option.
+  static void SetPrintFunctionName(bool const & isPrintFunctionName);
 
   /// Set output option.
   static void SetPrintLineNumber(bool const & isPrintLineNumber);
@@ -108,4 +135,10 @@ private:
 
   /// It is used to store the current output file name flag.
   static bool m_isPrintFileName;
+
+  /// It is used to store the current file name.
+  static std::string m_fileName;
+
+  /// It is used to store the ability to output to a file.
+  static bool m_isPrintToFile;
 };

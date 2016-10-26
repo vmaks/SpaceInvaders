@@ -202,3 +202,15 @@ TEST(logger_test, logger_17)
 
   LOG(LogLevel::info) << "Print a function name, line number and file name" << "\n";
 }
+
+// Check output with help of GetLogger().
+TEST(logger_test, logger_18)
+{
+  Logger::SetLogLevel(LogLevel::info);
+
+  Logger::SetPrintToFile("out.txt", true);
+
+  LOG(LogLevel::info) << "Print to a file" << "\n";
+  LOG(LogLevel::info) << "Print to a file" << "\n";
+  LOG(LogLevel::info) << "Print to a file" << "\n";
+}

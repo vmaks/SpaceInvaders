@@ -1,3 +1,5 @@
+#include <fstream>
+#include <sstream>
 #include "logger.hpp"
 #include "except.hpp"
 
@@ -9,6 +11,8 @@ bool Logger::m_isPrint = false;
 bool Logger::m_isPrintFunctionName = false;
 bool Logger::m_isPrintLineNumber = false;
 bool Logger::m_isPrintFileName = false;
+bool Logger::m_isPrintToFile = false;
+std::string Logger::m_fileName = "out.txt";
 
 Logger & Logger::GetLogger(LogLevel level,
                           std::string const & functionName,
@@ -84,22 +88,35 @@ void Logger::PrintAdditionalParameters(
     std::string lineNumber,
     std::string const & fileName)
 {
-  std::cout << "[" << GetLogLevelAsString(m_msgLevel) << "] ";
+  std::stringstream output;
+
+  output << "[" << GetLogLevelAsString(m_msgLevel) << "] ";
 
   if (m_isPrintFunctionName)
   {
-    std::cout << functionName;
-    std::cout << " | ";
+    output << functionName;
+    output << " | ";
   }
   if (m_isPrintLineNumber)
   {
-    std::cout << lineNumber;
-    std::cout << " | ";
+    output << lineNumber;
+    output << " | ";
   }
   if (m_isPrintFileName)
   {
-    std::cout << fileName;
-    std::cout << " | ";
+    output << fileName;
+    output << " | ";
+  }
+
+  if (m_isPrintToFile)
+  {
+    GetFile() << output.str();
+
+    GetFile().flush();
+  }
+  else
+  {
+    std::cout << output.str();
   }
 }
 
@@ -109,16 +126,38 @@ void Logger::Log(LogLevel const & logLevel,
                 std::string lineNumber,
                 std::string const & fileName)
 {
+  std::stringstream output;
+
   if (logLevel >= m_msgLevel)
   {
     PrintAdditionalParameters(
         functionName, lineNumber, fileName);
 
-    std::cout << message << std::endl;
+
+    if (m_isPrintToFile)
+    {
+      output << message << std::endl;
+
+      GetFile() << output.str();
+
+      GetFile().flush();
+    }
+    else
+    {
+      std::cout << output.str();
+    }
   }
 }
 
 LogLevel Logger::GetLogLevel()
 {
   return m_msgLevel;
+}
+void Logger::SetPrintToFile(std::string const & fileName,
+                            const bool & isPrintToFile)
+{
+  m_fileName = fileName;
+  m_isPrintToFile = isPrintToFile;
+
+  GetFile(true);
 }
