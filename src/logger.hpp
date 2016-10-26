@@ -32,46 +32,19 @@ public:
   static Logger & GetLogger(LogLevel level,
                             std::string const & functionName = "",
                             std::string lineNumber = "",
-                            std::string const & fileName = "")
-  {
-    static Logger logger;
-
-    if (level >= m_msgLevel)
-    {
-      m_isPrint = true;
-
-      PrintAdditionalParameters(functionName, lineNumber, fileName);
-    }
-    else {
-      m_isPrint = false;
-    }
-
-    return logger;
-  }
+                            std::string const & fileName = "");
 
   /// Set the current log level.
-  static void SetLogLevel(LogLevel const &type)
-  {
-    m_msgLevel = type;
-  }
+  static void SetLogLevel(LogLevel const &type);
 
   /// Set output option.
-  static void SetPrintFunctionName(bool const &isPrintFunctionName)
-  {
-    m_isPrintFunctionName = isPrintFunctionName;
-  }
+  static void SetPrintFunctionName(bool const &isPrintFunctionName);
 
   /// Set output option.
-  static void SetPrintLineNumber(bool const & isPrintLineNumber)
-  {
-    m_isPrintLineNumber = isPrintLineNumber;
-  }
+  static void SetPrintLineNumber(bool const & isPrintLineNumber);
 
   /// Set output option.
-  static void SetPrintFileName(bool const & isPrintFileName)
-  {
-    m_isPrintFileName = isPrintFileName;
-  }
+  static void SetPrintFileName(bool const & isPrintFileName);
 
   /// Get the current log level.
   static std::string GetLogLevelAsString(LogLevel const &type);
@@ -80,47 +53,16 @@ public:
   static void PrintAdditionalParameters(
           std::string const & functionName,
           std::string lineNumber,
-          std::string const & fileName)
-  {
-    std::cout << "[" << GetLogLevelAsString(m_msgLevel) << "] ";
-
-    if (m_isPrintFunctionName)
-    {
-      std::cout << functionName;
-      std::cout << " | ";
-    }
-    if (m_isPrintLineNumber)
-    {
-      std::cout << lineNumber;
-      std::cout << " | ";
-    }
-    if (m_isPrintFileName)
-    {
-      std::cout << fileName;
-      std::cout << " | ";
-    }
-  }
+          std::string const & fileName);
 
   /// It simply output a message with a log level.
   static void Log(LogLevel const & logLevel,
                   std::string const & message,
                   std::string const & functionName = "",
                   std::string lineNumber = "",
-                  std::string const & fileName = "")
-  {
-    if (logLevel >= m_msgLevel)
-    {
-      PrintAdditionalParameters(
-              functionName, lineNumber, fileName);
+                  std::string const & fileName = "");
 
-      std::cout << message << std::endl;
-    }
-  }
-
-  static LogLevel GetLogLevel()
-  {
-    return m_msgLevel;
-  }
+  static LogLevel GetLogLevel();
 
   /// Output an object to the screen.
   template<class T>
