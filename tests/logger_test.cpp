@@ -86,7 +86,7 @@ TEST(logger_test, logger_7)
 {
   try
   {
-    Logger::GetLabel(LogLevel::fatal);
+      Logger::GetLogLevelAsString(LogLevel::fatal);
   }
   catch (WrongLogLevelException)
   {

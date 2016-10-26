@@ -6,7 +6,7 @@ LogLevel Logger::m_msgLevel = LogLevel::info;
 
 bool Logger::m_isPrint = false;
 
-std::string Logger::GetLabel(LogLevel const & type)
+std::string Logger::GetLogLevelAsString(LogLevel const &type)
 {
   std::string label;
   switch(type)

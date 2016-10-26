@@ -28,7 +28,7 @@ public:
     {
       m_isPrint = true;
 
-      std::cout << "[" << GetLabel(m_msgLevel) << "] ";
+      std::cout << "[" << GetLogLevelAsString(m_msgLevel) << "] ";
     }
     else {
       m_isPrint = false;
@@ -44,7 +44,7 @@ public:
   }
 
   /// Get the current log level.
-  static std::string GetLabel(LogLevel const & type);
+  static std::string GetLogLevelAsString(LogLevel const &type);
 
   /// It simply output a message with a log level.
   static void Log(LogLevel const & logLevel,
