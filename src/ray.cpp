@@ -259,7 +259,7 @@ void Ray::setDirection(const Point2D & direction)
 std::ostream & operator << (std::ostream & os,
                            Ray const & rhs)
 {
-  os << "origin: " << rhs.origin() << "; "
-     << "direction: " << rhs.direction() << std::endl;
+  os << "Ray [origin: " << rhs.origin() << "; "
+     << "direction: " << rhs.direction() << "]";
   return os;
 }

@@ -1,4 +1,4 @@
-#include "game_entity_with_weapon.h"
+#include "game_entity_with_weapon.hpp"
 
 class Alien : public GameEntityWithWeapon
 {
@@ -25,3 +25,6 @@ public:
 private:
   uint m_speed = 0;
 };
+
+std::ostream & operator << (std::ostream & os,
+                            Alien const & obj);

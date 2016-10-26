@@ -191,3 +191,9 @@ TEST(ray_test, normalize)
   EXPECT_FLOAT_EQ(direction5.y(), -1.0f);
 }
 
+TEST(ray_test, test_output)
+{
+  std::stringstream s;
+  s << Ray(Point2D(1.0f, 1.0f),Point2D(0.0f, 1.0f));
+  EXPECT_EQ(s.str(), "Ray [origin: Point2D {1, 1}; direction: Point2D {0, 1}]");
+}

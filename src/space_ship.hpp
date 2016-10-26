@@ -1,6 +1,6 @@
 #pragma once
 
-#include "game_entity_with_weapon.h"
+#include "game_entity_with_weapon.hpp"
 
 class SpaceShip: public GameEntityWithWeapon
 {
@@ -20,3 +20,6 @@ public:
   void Update() override;
   void Move() override;
 };
+
+std::ostream & operator << (std::ostream & os,
+                            SpaceShip const & obj);

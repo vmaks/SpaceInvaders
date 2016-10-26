@@ -1,5 +1,7 @@
 #include <stdexcept>
-#include "obstacle.h"
+#include "except.hpp"
+#include "obstacle.hpp"
+
 
 Obstacle::~Obstacle()
 {
@@ -18,5 +20,13 @@ void Obstacle::SetHealth(uint const & health)
 
 void Obstacle::Update()
 {
-  std::runtime_error("Not implemented");
+  throw NotImplementedException();
+}
+
+std::ostream & operator << (std::ostream & os,
+                            const Obstacle & obj)
+{
+  os << "Obstacle [Position: " << obj.GetPosition()
+     << "; Health: " << obj.GetHealth() << "]";
+  return os;
 }

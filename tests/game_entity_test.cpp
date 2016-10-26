@@ -1,9 +1,10 @@
 #include "gtest/gtest.h"
-#include "alien.h"
-#include "space_ship.h"
-#include "obstacle.h"
-#include "bullet_manager.h"
-#include "space.h"
+#include "alien.hpp"
+#include "space_ship.hpp"
+#include "obstacle.hpp"
+#include "bullet_manager.hpp"
+#include "space.hpp"
+#include "except.hpp"
 
 TEST(bullet_test, test_construction)
 {
@@ -29,20 +30,16 @@ TEST(bullet_test, test_construction)
   {
       bullet2.Update();
   }
-  catch(std::exception const & ex)
+  catch(NotImplementedException const & ex)
   {
-    std::cout << ex.what() << std::endl;
-      EXPECT_EQ(ex.what(),std::string("Not implemented"));
   }
 
   try
   {
       bullet2.Move();
   }
-  catch(std::exception const & ex)
+  catch(NotImplementedException const & ex)
   {
-    std::cout << ex.what() << std::endl;
-      EXPECT_EQ(ex.what(),std::string("Not implemented"));
   }
 }
 
@@ -93,10 +90,8 @@ TEST(obstacle_test, test_construction)
   {
       obstacle2.Update();
   }
-  catch(std::exception const & ex)
+  catch(NotImplementedException const & ex)
   {
-    std::cout << ex.what() << std::endl;
-      EXPECT_EQ(ex.what(),std::string("Not implemented"));
   }
 }
 
@@ -121,20 +116,16 @@ TEST(alien_test, test_construction)
   {
       alien1.Update();
   }
-  catch(std::exception const & ex)
+  catch(NotImplementedException const & ex)
   {
-    std::cout << ex.what() << std::endl;
-      EXPECT_EQ(ex.what(),std::string("Not implemented"));
   }
 
   try
   {
       alien1.Move();
   }
-  catch(std::exception const & ex)
+  catch(NotImplementedException const & ex)
   {
-    std::cout << ex.what() << std::endl;
-      EXPECT_EQ(ex.what(),std::string("Not implemented"));
   }
 
   Alien alien2;
@@ -171,20 +162,16 @@ TEST(spaceship_test, test_construction)
   {
       spaceship1.Update();
   }
-  catch(std::exception const & ex)
+  catch(NotImplementedException const & ex)
   {
-    std::cout << ex.what() << std::endl;
-      EXPECT_EQ(ex.what(),std::string("Not implemented"));
   }
 
   try
   {
       spaceship1.Move();
   }
-  catch(std::exception const & ex)
+  catch(NotImplementedException const & ex)
   {
-    std::cout << ex.what() << std::endl;
-      EXPECT_EQ(ex.what(),std::string("Not implemented"));
   }
 
   SpaceShip spaceship2;
@@ -225,4 +212,49 @@ TEST(space_test, test_construction)
   EXPECT_EQ(space2.GetGameEntity().size(),0);
   space2.AddGameEntity(TGameEntityConstPtr(new Bullet()));
   EXPECT_EQ(space2.GetGameEntity().size(),1);
+}
+
+
+TEST(space_test, test_output)
+{
+  std::stringstream s;
+  s << Space();
+  EXPECT_EQ(s.str(), "Space [Height: 0; Width: 0]");
+}
+
+TEST(alien_test, test_output)
+{
+  std::stringstream s;
+  s << Alien();
+  EXPECT_EQ(s.str(), "Alien [Position: Point2D {0, 0}; Rate: 0; Health: 0; Speed: 0]");
+}
+
+TEST(bullet_test, test_output)
+{
+  std::stringstream s;
+  s << Bullet();
+  EXPECT_EQ(s.str(), "Bullet [Position: Point2D {0, 0}; Damage: 0]");
+}
+
+TEST(bulletmanager_test, test_output)
+{
+  BulletManager bm;
+  bm.SetAmmo(2);
+  std::stringstream s;
+  s << bm;
+  EXPECT_EQ(s.str(), "BulletManager [Bullet [Position: Point2D {0, 0}; Damage: 0]Bullet [Position: Point2D {0, 0}; Damage: 0]]");
+}
+
+TEST(spaceship_test, test_output)
+{
+  std::stringstream s;
+  s << SpaceShip();
+  EXPECT_EQ(s.str(), "SpaceShip [Position: Point2D {0, 0}; Rate: 0; Health: 0]");
+}
+
+TEST(obstacle_test, test_output)
+{
+  std::stringstream s;
+  s << Obstacle();
+  EXPECT_EQ(s.str(), "Obstacle [Position: Point2D {0, 0}; Health: 0]");
 }

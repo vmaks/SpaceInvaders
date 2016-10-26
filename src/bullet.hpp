@@ -1,5 +1,5 @@
-#include "game_entity.h"
-#include "movable.h"
+#include "game_entity.hpp"
+#include "movable.hpp"
 
 class Bullet: public GameEntity, public Movable
 {
@@ -25,3 +25,6 @@ private:
 };
 
 using TBulletPtr = std::shared_ptr<Bullet>;
+
+std::ostream & operator << (std::ostream & os,
+                            Bullet const & obj);

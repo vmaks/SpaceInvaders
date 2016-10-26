@@ -1,7 +1,7 @@
 #pragma once
 
 #include <list>
-#include "game_entity.h"
+#include "game_entity.hpp"
 
 class Space
 {
@@ -27,3 +27,6 @@ private:
   uint m_height = 0;
   std::list<TGameEntityConstPtr> m_gameEntityList;
 };
+
+std::ostream & operator << (std::ostream & os,
+                            Space const & obj);

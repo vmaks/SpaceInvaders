@@ -1,6 +1,6 @@
 #pragma once
 
-#include "game_entity.h"
+#include "game_entity.hpp"
 
 class Obstacle: public GameEntity
 {
@@ -23,3 +23,6 @@ public:
 private:
   uint m_health = 0;
 };
+
+std::ostream & operator << (std::ostream & os,
+                            Obstacle const & obj);

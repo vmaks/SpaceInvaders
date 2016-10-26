@@ -1,4 +1,4 @@
-#include "space.h"
+#include "space.hpp"
 
 uint Space::GetWidth() const
 {
@@ -33,4 +33,12 @@ Space::~Space()
 std::list<TGameEntityConstPtr> const & Space::GetGameEntity() const
 {
   return m_gameEntityList;
+}
+
+std::ostream & operator << (std::ostream & os,
+                            const Space & obj)
+{
+  os << "Space [Height: " << obj.GetHeight()
+     << "; Width: " << obj.GetWidth() << "]";
+  return os;
 }

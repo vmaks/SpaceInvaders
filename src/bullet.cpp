@@ -1,5 +1,6 @@
-#include <stdexcept>
-#include "bullet.h"
+#include "except.hpp"
+#include "bullet.hpp"
+
 
 Bullet::~Bullet()
 {
@@ -18,10 +19,18 @@ void Bullet::SetDamage(const uint & damage)
 
 void Bullet::Update()
 {
-  std::runtime_error("Not implemented");
+  throw NotImplementedException();
 }
 
 void Bullet::Move()
 {
-  std::runtime_error("Not implemented");
+  throw NotImplementedException();
+}
+
+std::ostream & operator << (std::ostream & os,
+                            const Bullet & obj)
+{
+  os << "Bullet [Position: " << obj.GetPosition()
+     << "; Damage: " << obj.GetDamage() << "]";
+  return os;
 }

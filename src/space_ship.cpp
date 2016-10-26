@@ -1,17 +1,27 @@
-#include <stdexcept>
-#include "space_ship.h"
+#include "except.hpp"
+#include "space_ship.hpp"
+
 
 void SpaceShip::Update()
 {
-  std::runtime_error("Not implemented");
+  throw NotImplementedException();
 }
 
 void SpaceShip::Move()
 {
-  std::runtime_error("Not implemented");
+  throw NotImplementedException();
 }
 
 SpaceShip::~SpaceShip()
 {
 
+}
+
+std::ostream & operator << (std::ostream & os,
+                            const SpaceShip & obj)
+{
+  os << "SpaceShip [Position: " << obj.GetPosition()
+     << "; Rate: " << obj.GetRate()
+     << "; Health: " << obj.GetHealth() << "]";
+  return os;
 }

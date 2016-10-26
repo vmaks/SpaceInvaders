@@ -1,5 +1,6 @@
-#include <stdexcept>
-#include "alien.h"
+#include "except.hpp"
+#include "alien.hpp"
+
 
 Alien::~ Alien()
 {
@@ -8,12 +9,12 @@ Alien::~ Alien()
 
 void Alien::Move()
 {
-  std::runtime_error("Not implemented");
+  throw NotImplementedException();
 }
 
 void Alien::Update()
 {
-  std::runtime_error("Not implemented");
+  throw NotImplementedException();
 }
 
 uint Alien::GetSpeed() const
@@ -24,4 +25,14 @@ uint Alien::GetSpeed() const
 void Alien::SetSpeed(uint const & rate)
 {
   m_speed = rate;
+}
+
+std::ostream & operator << (std::ostream & os,
+                            const Alien & obj)
+{
+  os << "Alien [Position: " << obj.GetPosition()
+     << "; Rate: " << obj.GetRate()
+     << "; Health: " << obj.GetHealth()
+     << "; Speed: " << obj.GetSpeed() << "]";
+  return os;
 }
