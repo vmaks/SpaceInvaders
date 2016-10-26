@@ -20,16 +20,17 @@ enum class LogLevel
 class Logger
 {
 public:
-  static Logger & GetLogger(
-      LogLevel level)
+  static Logger & GetLogger(LogLevel level)
   {
     static Logger logger;
 
-    if (level >= m_msgLevel) {
+    if (level >= m_msgLevel)
+    {
       m_isPrint = true;
 
       std::cout << "[" << GetLabel(m_msgLevel) << "] ";
-    } else {
+    }
+    else {
       m_isPrint = false;
     }
 
