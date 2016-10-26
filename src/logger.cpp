@@ -2,9 +2,13 @@
 #include "except.hpp"
 
 
+// Set default values.
 LogLevel Logger::m_msgLevel = LogLevel::info;
 
 bool Logger::m_isPrint = false;
+bool Logger::m_isPrintFunctionName = false;
+bool Logger::m_isPrintLineNumber = false;
+bool Logger::m_isPrintFileName = false;
 
 std::string Logger::GetLogLevelAsString(LogLevel const &type)
 {
