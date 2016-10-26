@@ -1,4 +1,5 @@
 #include "logger.hpp"
+#include "except.hpp"
 
 
 LogLevel Logger::m_msgLevel = LogLevel::info;
@@ -28,6 +29,8 @@ std::string Logger::GetLabel(LogLevel const & type)
     case LogLevel::fatal:
       label = "fatal";
       break;
+    default:
+      throw WrongLogLevelException();
   }
   return label;
 }

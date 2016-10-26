@@ -7,6 +7,7 @@
 #include "obstacle.hpp"
 #include "bullet_manager.hpp"
 #include "space.hpp"
+#include "except.hpp"
 
 
 TEST(logger_test, logger_1)
@@ -78,4 +79,17 @@ TEST(logger_test, logger_6)
 
   Logger::Log(LogLevel::trace, "Hello");
   Logger::Log(LogLevel::fatal, "World");
+}
+
+// Check WrongLogLevelException.
+TEST(logger_test, logger_7)
+{
+  try
+  {
+    Logger::GetLabel(LogLevel::fatal);
+  }
+  catch (WrongLogLevelException)
+  {
+
+  }
 }
