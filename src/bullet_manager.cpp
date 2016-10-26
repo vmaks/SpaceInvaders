@@ -18,11 +18,11 @@ std::list<TBulletPtr> BulletManager::GetBullets() const
   return m_bulletList;
 }
 
-void BulletManager::SetAmmo(uint const & count_bullet)
+void BulletManager::SetAmmo(uint const & countBullet)
 {
-  if (count_bullet > 0)
+  if (countBullet > 0)
   {
-    m_bulletList = std::list<TBulletPtr>(count_bullet, TBulletPtr(new Bullet()));
+    m_bulletList = std::list<TBulletPtr>(countBullet, TBulletPtr(new Bullet()));
   }
 }
 

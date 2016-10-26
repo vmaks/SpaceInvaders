@@ -12,7 +12,7 @@ public:
   
   void Fire();
   std::list<TBulletPtr> GetBullets() const;
-  void SetAmmo(uint const & count_bullet);
+  void SetAmmo(uint const & countBullet);
 
 private:
   std::list<TBulletPtr> m_bulletList;
