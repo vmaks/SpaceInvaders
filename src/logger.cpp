@@ -14,7 +14,7 @@ bool Logger::m_isPrintFileName = false;
 bool Logger::m_isPrintToFile = false;
 std::string Logger::m_fileName = "out.txt";
 
-Logger & Logger::GetLogger(LogLevel level,
+Logger & Logger::Instance(LogLevel level,
                           std::string const & functionName,
                           std::string lineNumber,
                           std::string const & fileName)
