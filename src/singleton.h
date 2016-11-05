@@ -1,5 +1,6 @@
 #pragma once
 
+/// Singleton template.
 template <typename T>
 class Singleton {
  public:
