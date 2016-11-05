@@ -4,7 +4,7 @@
 #include "movable.hpp"
 #include "bullet_manager.hpp"
 
-class GameEntityWithWeapon: public GameEntity, public Movable
+class GameEntityWithWeapon: public GameEntity, public MovableInterface
 {
 public:
   GameEntityWithWeapon() = default;

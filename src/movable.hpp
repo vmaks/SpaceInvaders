@@ -1,8 +1,8 @@
 #pragma once
 
-class Movable
+class MovableInterface
 {
 public:
-  virtual ~Movable() = default;
+  virtual ~MovableInterface() = default;
   virtual void Move() = 0;
 };
