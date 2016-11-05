@@ -1,7 +1,7 @@
 #pragma once
 
 #include "game_entity.hpp"
-#include "movable.hpp"
+#include "movable_interface.hpp"
 #include "bullet_manager.hpp"
 
 class GameEntityWithWeapon: public GameEntity, public MovableInterface
