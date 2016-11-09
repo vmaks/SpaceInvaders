@@ -20,7 +20,7 @@ class EventSource : public EventSourceInterface
 
   void NotifyListeners() override;
 
-  std::size_t Count() override;
+  size_t Count() override;
 
  private:
   std::list<std::shared_ptr<EventListenerInterface>> m_listeners;

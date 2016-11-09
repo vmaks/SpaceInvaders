@@ -31,7 +31,7 @@ void EventSource::NotifyListeners()
   }
 }
 
-std::size_t EventSource::Count()
+size_t EventSource::Count()
 {
   return  m_listeners.size();
 }
