@@ -27,7 +27,8 @@ Logger & Logger::Instance(LogLevel level,
 
     PrintAdditionalParameters(functionName, lineNumber, fileName);
   }
-  else {
+  else
+  {
     m_isPrint = false;
   }
 
