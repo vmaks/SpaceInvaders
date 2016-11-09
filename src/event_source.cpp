@@ -25,7 +25,7 @@ void EventSource::UnregisterListener(
 
 void EventSource::NotifyListeners()
 {
-  for (auto listener : m_listeners)
+  for (auto & listener : m_listeners)
   {
     listener->Notify();
   }
