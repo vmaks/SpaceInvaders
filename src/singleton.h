@@ -1,10 +1,17 @@
 #pragma once
 
+#include <memory>
+
 /// Singleton template.
 template <typename T>
 class Singleton {
  public:
-  static T & Instance();
+  template<typename... Args>
+  static T & Instance(Args && ... args)
+  {
+    static T instance(std::forward<Args>(args)...);
+    return instance;
+  }
 
  protected:
   Singleton() = default;
@@ -15,9 +22,3 @@ class Singleton {
   Singleton(Singleton &&) = delete;
   Singleton & operator = (Singleton &&) = delete;
 };
-
-template <typename T>
-T & Singleton<T>::Instance() {
-  static T instance;
-  return instance;
-}

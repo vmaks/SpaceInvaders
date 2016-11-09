@@ -14,10 +14,10 @@ bool Logger::m_isPrintFileName = false;
 bool Logger::m_isPrintToFile = false;
 std::string Logger::m_fileName = "out.txt";
 
-Logger & Logger::Instance(LogLevel level,
-                          std::string const & functionName,
-                          std::string lineNumber,
-                          std::string const & fileName)
+Logger::Logger(LogLevel level,
+               std::string const & functionName,
+               std::string lineNumber,
+               std::string const & fileName)
 {
   static Logger logger;
 
@@ -31,8 +31,6 @@ Logger & Logger::Instance(LogLevel level,
   {
     m_isPrint = false;
   }
-
-  return logger;
 }
 
 void Logger::SetLogLevel(LogLevel const &type)
