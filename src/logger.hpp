@@ -3,10 +3,12 @@
 #include <iostream>
 #include <fstream>
 
+#include "singleton.h"
+
 
 /// It is used to add function name, line number and file name if needed.
 #define LOG(level) \
-Logger::GetLogger(level, __func__, std::to_string(__LINE__), __FILE__)
+Logger::Instance(level, __func__, std::to_string(__LINE__), __FILE__)
 
 /// It is used to add function name, line number and file name if needed.
 #define LOG_MESSAGE(level, message) \
@@ -27,13 +29,13 @@ enum class LogLevel
 
 /// It is used to output information
 /// to the screen or a file.
-class Logger
+class Logger : public Singleton<Logger>
 {
 public:
-  static Logger & GetLogger(LogLevel level,
-                            std::string const & functionName = "",
-                            std::string lineNumber = "",
-                            std::string const & fileName = "");
+  Logger(LogLevel level,
+         std::string const & functionName = "",
+         std::string lineNumber = "",
+         std::string const & fileName = "");
 
   static std::ofstream & GetFile(bool const & isReset = false)
   {
@@ -119,6 +121,9 @@ public:
   }
 
 private:  
+  /// Otherwise it won't be accessible in parent class Singleton<Logger>.
+  friend class Singleton<Logger>;
+
   Logger() = default;
 
   /// It is used to store the current log level.

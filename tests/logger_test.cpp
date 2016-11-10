@@ -10,75 +10,75 @@
 #include "except.hpp"
 
 
-// Check output with help of GetLogger(). Test SetLogLevel().
+// Check output with help of Instance(). Test SetLogLevel().
 TEST(logger_test, logger_1)
 {
   Logger::SetLogLevel(LogLevel::trace);
 
-  Logger::GetLogger(LogLevel::trace) << "trace\n";
+  Logger::Instance(LogLevel::trace) << "trace\n";
 
-  Logger::GetLogger(LogLevel::debug) << "debug\n";
+  Logger::Instance(LogLevel::debug) << "debug\n";
 
-  Logger::GetLogger(LogLevel::info) << "info\n";
+  Logger::Instance(LogLevel::info) << "info\n";
 
-  Logger::GetLogger(LogLevel::warning) << "warning\n";
+  Logger::Instance(LogLevel::warning) << "warning\n";
 
-  Logger::GetLogger(LogLevel::fatal) << "fatal\n";
+  Logger::Instance(LogLevel::fatal) << "fatal\n";
 }
 
-// Check output with help of GetLogger(). Test SetLogLevel().
+// Check output with help of Instance(). Test SetLogLevel().
 TEST(logger_test, logger_2)
 {
   Logger::SetLogLevel(LogLevel::info);
 
-  Logger::GetLogger(LogLevel::trace) << "trace\n";
+  Logger::Instance(LogLevel::trace) << "trace\n";
 
-  Logger::GetLogger(LogLevel::debug) << "debug\n";
+  Logger::Instance(LogLevel::debug) << "debug\n";
 
-  Logger::GetLogger(LogLevel::info) << "info\n";
+  Logger::Instance(LogLevel::info) << "info\n";
 
-  Logger::GetLogger(LogLevel::warning) << "warning\n";
+  Logger::Instance(LogLevel::warning) << "warning\n";
 
-  Logger::GetLogger(LogLevel::fatal) << "fatal\n";
+  Logger::Instance(LogLevel::fatal) << "fatal\n";
 }
 
-// Check output with help of GetLogger(). Test SetLogLevel().
+// Check output with help of Instance(). Test SetLogLevel().
 TEST(logger_test, logger_3)
 {
   Logger::SetLogLevel(LogLevel::fatal);
 
-  Logger::GetLogger(LogLevel::trace) << "trace\n";
+  Logger::Instance(LogLevel::trace) << "trace\n";
 
-  Logger::GetLogger(LogLevel::debug) << "debug\n";
+  Logger::Instance(LogLevel::debug) << "debug\n";
 
-  Logger::GetLogger(LogLevel::info) << "info\n";
+  Logger::Instance(LogLevel::info) << "info\n";
 
-  Logger::GetLogger(LogLevel::warning) << "warning\n";
+  Logger::Instance(LogLevel::warning) << "warning\n";
 
-  Logger::GetLogger(LogLevel::fatal) << "fatal\n";
+  Logger::Instance(LogLevel::fatal) << "fatal\n";
 }
 
-// Check output with help of GetLogger(). Print multiple messages.
+// Check output with help of Instance(). Print multiple messages.
 TEST(logger_test, logger_4)
 {
   Logger::SetLogLevel(LogLevel::info);
 
-  Logger::GetLogger(LogLevel::fatal) << "info" << " warning" << " fatal\n";
+  Logger::Instance(LogLevel::fatal) << "info" << " warning" << " fatal\n";
 }
 
-// Check output with help of GetLogger(). Print multiple messages.
+// Check output with help of Instance(). Print multiple messages.
 TEST(logger_test, logger_5)
 {
   Logger::SetLogLevel(LogLevel::info);
 
-  Logger::GetLogger(LogLevel::info) << 5 << "\n";
-  Logger::GetLogger(LogLevel::info) << std::list<int>{2, 3, 4} << "\n";;
-  Logger::GetLogger(LogLevel::info) << std::vector<Bullet>(3, Bullet()) << "\n";;
-  Logger::GetLogger(LogLevel::info) << Alien() << SpaceShip() << Space(15, 14) << "\n";;
-  Logger::GetLogger(LogLevel::info) << Alien() << SpaceShip() << Space(15, 14) << "\n";;
+  Logger::Instance(LogLevel::info) << 5 << "\n";
+  Logger::Instance(LogLevel::info) << std::list<int>{2, 3, 4} << "\n";;
+  Logger::Instance(LogLevel::info) << std::vector<Bullet>(3, Bullet()) << "\n";;
+  Logger::Instance(LogLevel::info) << Alien() << SpaceShip() << Space(15, 14) << "\n";;
+  Logger::Instance(LogLevel::info) << Alien() << SpaceShip() << Space(15, 14) << "\n";;
 }
 
-// Check output with help of GetLogger(). Print multiple messages.
+// Check output with help of Instance(). Print multiple messages.
 TEST(logger_test, logger_6)
 {
   Logger::SetLogLevel(LogLevel::info);
@@ -155,7 +155,7 @@ TEST(logger_test, logger_13)
   LOG_MESSAGE(LogLevel::info, "Print a function name, line number and file name");
 }
 
-// Check output with help of GetLogger().
+// Check output with help of Instance().
 TEST(logger_test, logger_14)
 {
   Logger::SetLogLevel(LogLevel::info);
@@ -164,10 +164,10 @@ TEST(logger_test, logger_14)
   Logger::SetPrintLineNumber(true);
   Logger::SetPrintFileName(true);
 
-  Logger::GetLogger(LogLevel::info, __func__, std::to_string(__LINE__), __FILE__) << "a message" << "\n";
+  Logger::Instance(LogLevel::info, __func__, std::to_string(__LINE__), __FILE__) << "a message" << "\n";
 }
 
-// Check output with help of GetLogger().
+// Check output with help of Instance().
 TEST(logger_test, logger_15)
 {
   Logger::SetLogLevel(LogLevel::info);
@@ -179,7 +179,7 @@ TEST(logger_test, logger_15)
   LOG(LogLevel::info) << "Print a message only" << "\n";
 }
 
-// Check output with help of GetLogger().
+// Check output with help of Instance().
 TEST(logger_test, logger_16)
 {
   Logger::SetLogLevel(LogLevel::info);
@@ -191,7 +191,7 @@ TEST(logger_test, logger_16)
   LOG(LogLevel::info) << "Print a function name and line number" << "\n";
 }
 
-// Check output with help of GetLogger().
+// Check output with help of Instance().
 TEST(logger_test, logger_17)
 {
   Logger::SetLogLevel(LogLevel::info);
@@ -203,7 +203,7 @@ TEST(logger_test, logger_17)
   LOG(LogLevel::info) << "Print a function name, line number and file name" << "\n";
 }
 
-// Check output with help of GetLogger().
+// Check output with help of Instance().
 TEST(logger_test, logger_18)
 {
   Logger::SetLogLevel(LogLevel::info);
