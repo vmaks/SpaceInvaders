@@ -29,7 +29,7 @@ public:
   BulletManager const & GetBulletManager() const;
   void SetRate(uint const & rate);
   void SetHealth(uint const & health);
-  void SetBulletManager(BulletManager const & bulletmanager);
+  void SetBulletManager(BulletManager const & bulletManager);
   
 protected:
   uint m_rate = 0;
