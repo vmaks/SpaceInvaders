@@ -12,7 +12,7 @@ class EventSourceLambda : public EventSourceLambdaInterface
 
   void NotifyListeners() override ;
 
-  std::size_t Count() override;
+  std::size_t Count() const override;
 
  private:
   std::list<TEventHandler> m_listeners;

@@ -20,5 +20,5 @@ class EventSourceInterface
   virtual void NotifyListeners() = 0;
 
   /// Return a number of listeners.
-  virtual std::size_t Count() = 0;
+  virtual std::size_t Count() const = 0;
 };

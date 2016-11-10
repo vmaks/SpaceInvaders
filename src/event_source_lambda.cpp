@@ -8,13 +8,13 @@ void EventSourceLambda::RegisterListener(
 
 void EventSourceLambda::NotifyListeners()
 {
-  for (auto listener : m_listeners)
+  for (auto & listener : m_listeners)
   {
     listener();
   }
 }
 
-std::size_t EventSourceLambda::Count()
+std::size_t EventSourceLambda::Count() const
 {
   return m_listeners.size();
 }
