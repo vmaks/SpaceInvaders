@@ -1,7 +1,9 @@
 #include <QApplication>
 #include <QMainWindow>
 #include <QSurfaceFormat>
+
 #include "main_window.hpp"
+#include "settings_window.hpp"
 
 int main(int argc, char ** argv)
 {
@@ -12,7 +14,8 @@ int main(int argc, char ** argv)
   format.setStencilBufferSize(8);
 //  QSurfaceFormat::setDefaultFormat(format);
 
-  MainWindow mw;
-  mw.show();
+  SettingsWindow sw;
+  sw.show();
+
   return a.exec();
 }

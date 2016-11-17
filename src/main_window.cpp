@@ -24,5 +24,8 @@ MainWindow::MainWindow()
 void MainWindow::openSettingsWindow()
 {
   SettingsWindow * settingWindow = new SettingsWindow(this);
+
   settingWindow->show();
+
+  this->hide();
 }
