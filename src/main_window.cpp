@@ -8,7 +8,6 @@ typedef void (QWidget::*QWidgetVoidSlot)();
 
 MainWindow::MainWindow()
 {
-
   m_glWidget = new GLWidget(this, qRgb(20, 20, 50));
   m_timer = new QTimer(this);
   m_settingsButton = new QPushButton("Settings",m_glWidget);

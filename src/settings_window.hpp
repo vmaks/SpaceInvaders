@@ -19,5 +19,5 @@ private:
   QLabel * m_labelSpeed = nullptr;
   QComboBox * m_comboBoxSpeed = nullptr;
 private slots:
-  void startButton_clicked();
+  void StartButtonClicked();
 };

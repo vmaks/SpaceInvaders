@@ -17,9 +17,9 @@ SettingsWindow::SettingsWindow(QMainWindow * parent) : QMainWindow(parent)
   m_labelDifficulty = new QLabel("Difficulty", this);
 
   m_comboBoxDifficulty = new QComboBox(this);
-  m_comboBoxDifficulty->addItem("Difficulty 1", 1);
-  m_comboBoxDifficulty->addItem("Difficulty 2", 2);
-  m_comboBoxDifficulty->addItem("Difficulty 3", 3);
+  m_comboBoxDifficulty->addItem("Easy", 1);
+  m_comboBoxDifficulty->addItem("Normal", 2);
+  m_comboBoxDifficulty->addItem("Hard", 3);
 
   m_labelSpeed = new QLabel("Speed", this);
 
@@ -28,7 +28,7 @@ SettingsWindow::SettingsWindow(QMainWindow * parent) : QMainWindow(parent)
   m_comboBoxSpeed->addItem("Speed 2", 2);
   m_comboBoxSpeed->addItem("Speed 3", 3);
 
-  connect(m_startButton, SIGNAL(clicked()), this, SLOT(startButton_clicked()));
+  connect(m_startButton, SIGNAL(clicked()), this, SLOT(StartButtonClicked()));
 
   newLayout->addWidget(m_startButton);
   newLayout->addWidget(m_labelDifficulty);
@@ -39,9 +39,9 @@ SettingsWindow::SettingsWindow(QMainWindow * parent) : QMainWindow(parent)
   setFocusPolicy(Qt::StrongFocus);
 }
 
-void SettingsWindow::startButton_clicked()
+void SettingsWindow::StartButtonClicked()
 {
-  qDebug("startButton_clicked");
+  qDebug("StartButtonClicked");
 
   MainWindow * mainWindow = new MainWindow();
 
