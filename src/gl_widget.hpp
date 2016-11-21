@@ -52,6 +52,7 @@ private:
   /// m_period is a value between 0.0 and 1.0 .
   /// It as a period.
   float m_period = 0.0f;
+  std::vector<float> m_random = {0.2f, 0.5f, 0.7f};
 
   QOpenGLTexture * m_texture = nullptr;
   TexturedRect * m_texturedRect = nullptr;

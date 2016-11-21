@@ -97,10 +97,15 @@ void GLWidget::paintGL()
   Render();
 
   /// Set to zero if it reaches the 1.0 .
-  if (m_period < 1.0) {
+  if (m_period < 1.0)
+  {
     m_period += 0.001f;
-  } else {
+  }
+  else
+  {
     m_period = 0.0f;
+    for (auto it = m_random.begin() ; it != m_random.end(); ++it)
+      *it = random(0,1);
   }
 
   // Generate a parameter for a star.
@@ -159,9 +164,8 @@ void GLWidget::Render()
 
 void GLWidget::RenderStar(float blend)
 {
-//  double a= random(0,1);
-//  qDebug()<<a;
-  m_texturedRect->Render(m_texture, QVector2D(kWidth*random(0,1), kHeight*random(0,1)), QSize(64, 64), m_screenSize, blend);
+  for (auto it = m_random.begin() ; it != m_random.end(); ++it)
+    m_texturedRect->Render(m_texture, QVector2D(*it*kWidth, *it*kHeight), QSize(64, 64), m_screenSize, blend);
 }
 
 void GLWidget::mousePressEvent(QMouseEvent * e)
