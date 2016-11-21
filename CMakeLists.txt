@@ -6,6 +6,7 @@ add_definitions(--std=c++11)
 set(PROJECT_NAME SpaceInvaders)
 
 set(CMAKE_AUTOMOC ON)
+SET(CMAKE_AUTOUIC ON)
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 find_package(Qt5Widgets REQUIRED)
@@ -14,7 +15,7 @@ find_package(Qt5OpenGL REQUIRED)
 # Set up the main source folder.
 set(SOURCE_ROOT src)
 
-file(GLOB_RECURSE INCS "src/*.hpp")
+file(GLOB_RECURSE INCS "src/*.hpp" "src/*.ui")
 
 # Scan source folder to find all sources and put the result to SRC_LIST.
 aux_source_directory(${SOURCE_ROOT} SRC_LIST)
