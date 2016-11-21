@@ -11,9 +11,14 @@ class GameWindow : public QMainWindow
   Q_OBJECT
 
 public:
-  GameWindow();
+  GameWindow(QMainWindow *parent = 0);
+
 private slots:
-  void openSettingsWindow();
+  void on_menuButtonClicked();
+
+signals:
+  void moveToMenuPage();
+
 private:
   QTimer * m_timer = nullptr;
   QGridLayout * m_layout = nullptr;
