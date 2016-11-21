@@ -53,6 +53,7 @@ GLWidget::~GLWidget()
 {
   makeCurrent();
   delete m_texture;
+//  delete m_textureStar;
   delete m_texturedRect;
   doneCurrent();
 }
@@ -63,8 +64,8 @@ void GLWidget::initializeGL()
 
   m_texturedRect = new TexturedRect();
   m_texturedRect->Initialize(this);
-
   m_texture = new QOpenGLTexture(QImage("data/alien.png"));
+//  m_textureStar = new QOpenGLTexture(QImage("data/star.png"));
 
   m_time.start();
 }
@@ -86,12 +87,10 @@ void GLWidget::paintGL()
   glEnable(GL_CULL_FACE);
   glEnable(GL_BLEND);
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
   Render();
-
+  RenderStar(0.5);
   glDisable(GL_CULL_FACE);
   glDisable(GL_BLEND);
-
   painter.endNativePainting();
 
   if (elapsed != 0)
@@ -134,9 +133,14 @@ void GLWidget::Update(float elapsedSeconds)
 
 void GLWidget::Render()
 {
-  m_texturedRect->Render(m_texture, m_position, QSize(128, 128), m_screenSize);
-  m_texturedRect->Render(m_texture, QVector2D(400, 400), QSize(128, 128), m_screenSize);
-  m_texturedRect->Render(m_texture, QVector2D(600, 600), QSize(128, 128), m_screenSize);
+  m_texturedRect->Render(m_texture, m_position, QSize(128, 128), m_screenSize, 1.0);
+  m_texturedRect->Render(m_texture, QVector2D(400, 400), QSize(128, 128), m_screenSize, 1.0);
+  m_texturedRect->Render(m_texture, QVector2D(600, 600), QSize(128, 128), m_screenSize, 1.0);
+}
+
+void GLWidget::RenderStar(float blend)
+{
+  m_texturedRect->Render(m_texture, QVector2D(400, 600), QSize(64, 64), m_screenSize, blend);
 }
 
 void GLWidget::mousePressEvent(QMouseEvent * e)

@@ -27,7 +27,7 @@ protected:
 
   void Update(float elapsedSeconds);
   void Render();
-
+  void RenderStar(float blend);
   void mousePressEvent(QMouseEvent * e) override;
   void mouseDoubleClickEvent(QMouseEvent * e) override;
   void mouseMoveEvent(QMouseEvent * e) override;
@@ -48,7 +48,7 @@ private:
 
   QOpenGLTexture * m_texture = nullptr;
   TexturedRect * m_texturedRect = nullptr;
-
+//  QOpenGLTexture * m_textureStar = nullptr;
   QVector2D m_position = QVector2D(200, 200);
   std::array<bool, 4> m_directions = {{ false, false, false, false }};
 };
