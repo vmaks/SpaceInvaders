@@ -7,7 +7,7 @@
 
 #include <array>
 
-class MainWindow;
+class GameWindow;
 
 double constexpr PI = 3.14159265;
 
@@ -19,7 +19,7 @@ class GLWidget : public QGLWidget, protected QOpenGLFunctions
 {
   Q_OBJECT
 public:
-  GLWidget(MainWindow * mw, QColor const & background);
+  GLWidget(GameWindow * mw, QColor const & background);
   ~GLWidget();
 
 protected:
@@ -41,7 +41,7 @@ protected:
 private:
   int L2D(int px) const { return px * devicePixelRatio(); }
 
-  MainWindow * m_mainWindow;
+  GameWindow * m_mainWindow;
 
   unsigned int m_frames = 0;
   QTime m_time;

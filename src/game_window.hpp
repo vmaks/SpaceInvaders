@@ -6,12 +6,12 @@
 #include <QtOpenGL/QGLWidget>
 #include <QPushButton>
 
-class MainWindow : public QMainWindow
+class GameWindow : public QMainWindow
 {
   Q_OBJECT
 
 public:
-  MainWindow();
+  GameWindow();
 private slots:
   void openSettingsWindow();
 private:

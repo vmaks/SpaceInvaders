@@ -1,4 +1,4 @@
-#include "main_window.hpp"
+#include "game_window.hpp"
 
 #include <QApplication>
 #include "gl_widget.hpp"
@@ -6,7 +6,7 @@
 
 typedef void (QWidget::*QWidgetVoidSlot)();
 
-MainWindow::MainWindow()
+GameWindow::GameWindow()
 {
   m_glWidget = new GLWidget(this, qRgb(20, 20, 50));
   m_timer = new QTimer(this);
@@ -20,7 +20,7 @@ MainWindow::MainWindow()
   setFocusPolicy(Qt::StrongFocus);
 }
 
-void MainWindow::openSettingsWindow()
+void GameWindow::openSettingsWindow()
 {
   SettingsWindow * settingWindow = new SettingsWindow(this);
 

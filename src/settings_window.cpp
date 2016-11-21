@@ -2,7 +2,7 @@
 
 #include <qdebug.h>
 
-#include "main_window.hpp"
+#include "game_window.hpp"
 
 SettingsWindow::SettingsWindow(QMainWindow * parent) : QMainWindow(parent)
 {
@@ -43,7 +43,7 @@ void SettingsWindow::StartButtonClicked()
 {
   qDebug("StartButtonClicked");
 
-  MainWindow * mainWindow = new MainWindow();
+  GameWindow * mainWindow = new GameWindow();
 
   mainWindow->show();
 
