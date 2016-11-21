@@ -95,7 +95,19 @@ void GLWidget::paintGL()
   glEnable(GL_BLEND);
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
   Render();
-  RenderStar(0.5);
+
+  /// Set to zero if it reaches the 1.0 .
+  if (m_period < 1.0) {
+    m_period += 0.001f;
+  } else {
+    m_period = 0.0f;
+  }
+
+  // Generate a parameter for a star.
+  // transperancy is a value between 0.0 and 1.0 .
+  float transperancy = sin(m_period * 2 * PI);
+
+  RenderStar(transperancy);
   glDisable(GL_CULL_FACE);
   glDisable(GL_BLEND);
   painter.endNativePainting();
