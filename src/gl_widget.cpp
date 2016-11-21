@@ -20,6 +20,13 @@ int constexpr kLeftDirection = 0;
 int constexpr kRightDirection = 1;
 int constexpr kUpDirection = 2;
 int constexpr kDownDirection = 3;
+int constexpr kWidth = 1024;
+int constexpr kHeight = 768;
+
+double random(double min, double max)
+{
+    return (double)(rand())/RAND_MAX*(max - min) + min;
+}
 
 bool IsLeftButton(Qt::MouseButtons buttons)
 {
@@ -45,7 +52,7 @@ GLWidget::GLWidget(MainWindow * mw, QColor const & background)
   : m_mainWindow(mw)
   , m_background(background)
 {
-  setMinimumSize(1024, 768);
+  setMinimumSize(kWidth, kHeight);
   setFocusPolicy(Qt::StrongFocus);
 }
 
@@ -140,7 +147,9 @@ void GLWidget::Render()
 
 void GLWidget::RenderStar(float blend)
 {
-  m_texturedRect->Render(m_texture, QVector2D(400, 600), QSize(64, 64), m_screenSize, blend);
+//  double a= random(0,1);
+//  qDebug()<<a;
+  m_texturedRect->Render(m_texture, QVector2D(kWidth*random(0,1), kHeight*random(0,1)), QSize(64, 64), m_screenSize, blend);
 }
 
 void GLWidget::mousePressEvent(QMouseEvent * e)
