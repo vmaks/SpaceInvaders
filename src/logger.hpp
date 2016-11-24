@@ -105,6 +105,12 @@ public:
     return *this;
   }
 
+  Logger & operator << (std::ostream & (*manip)(std::ostream &))
+  {
+    manip(std::cout);
+    return *this;
+  }
+
   /// Output a collection of objects to the screen.
   template<typename T, template<typename, typename...> class C, typename... Args>
   Logger & operator << (C<T, Args...> const & objs)

@@ -210,7 +210,7 @@ TEST(logger_test, logger_18)
 
   Logger::SetPrintToFile("out.txt", true);
 
-  LOG(LogLevel::info) << "Print to a file" << "\n";
-  LOG(LogLevel::info) << "Print to a file" << "\n";
-  LOG(LogLevel::info) << "Print to a file" << "\n";
+  LOG(LogLevel::info) << "Print to a file" << std::endl;
+  LOG(LogLevel::info) << "Print to a file" << std::endl;
+  LOG(LogLevel::info) << "Print to a file" << std::endl;
 }
