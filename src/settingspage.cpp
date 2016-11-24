@@ -1,6 +1,16 @@
 #include "settingspage.hpp"
 #include "ui_settingspage.h"
+
+#include "json/assertions.h"
+#include "json/value.h"
+#include "json/writer.h"
+#include "json/json.h"
+#include "json/config.h"
+
+#include <QDebug>
+
 #include "util.hpp"
+
 
 SettingsPage::SettingsPage(QWidget *parent) :
   QWidget(parent),
@@ -18,6 +28,29 @@ SettingsPage::SettingsPage(QWidget *parent) :
 
   connect(this, SIGNAL(moveToMenuPage()),
           parent, SLOT(moveToMenuPage()));
+
+  ///
+  /// It reads setting data from a file.
+  ///
+  /// If file doesn't exits or
+  /// in case it contains wrong data it won't crash the app.
+  ///
+  try
+  {
+    Json::Value settings;
+
+    settings = Util::ReadJson(settings_file_name);
+
+    int currentDifficulty = settings["Difficulty"].asInt();
+    int currentSpeed = settings["Speed"].asInt();
+
+    // Set settings from the file if data is available.
+    ui->comboBoxDifficulty->setCurrentIndex(currentDifficulty);
+    ui->comboBoxSpeed->setCurrentIndex(currentSpeed);
+  }
+  catch(std::exception ex) {
+    qDebug() << "Can't read settings fron a file!";
+  }
 }
 
 SettingsPage::~SettingsPage()
@@ -32,15 +65,13 @@ void SettingsPage::on_menuButton_clicked()
 
 void SettingsPage::on_saveButton_clicked()
 {
-  QString currentDifficulty = ui->comboBoxDifficulty->currentText();
-  QString currentSpeed = ui->comboBoxSpeed->currentText();
+  int currentDifficulty = ui->comboBoxDifficulty->currentIndex();
+  int currentSpeed = ui->comboBoxSpeed->currentIndex();
 
   Json::Value settings;
 
-  settings["Difficulty"] = currentDifficulty.toStdString();
-  settings["Speed"] = currentSpeed.toStdString();
+  settings["Difficulty"] = currentDifficulty;
+  settings["Speed"] = currentSpeed;
 
-  std::string file_name = "settings.json";
-
-  Util::WriteJson(file_name, settings);
+  Util::WriteJson(settings_file_name, settings);
 }
