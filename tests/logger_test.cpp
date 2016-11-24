@@ -214,3 +214,18 @@ TEST(logger_test, logger_18)
   LOG(LogLevel::info) << "Print to a file" << std::endl;
   LOG(LogLevel::info) << "Print to a file" << std::endl;
 }
+
+TEST(logger_test, logger_19)
+{
+  Logger::SetLogLevel(LogLevel::info);
+
+  Logger::SetPrintToFile("out.txt", true);
+
+  Logger::SetPrintFunctionName(true);
+  Logger::SetPrintLineNumber(true);
+  Logger::SetPrintFileName(true);
+
+  LOG(LogLevel::info) << "Print to a file" << std::endl;
+  LOG(LogLevel::info) << "Print to a file" << std::endl;
+  LOG(LogLevel::info) << "Print to a file" << std::endl;
+}
