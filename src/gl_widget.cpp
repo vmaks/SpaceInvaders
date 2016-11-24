@@ -20,6 +20,13 @@ int constexpr kLeftDirection = 0;
 int constexpr kRightDirection = 1;
 int constexpr kUpDirection = 2;
 int constexpr kDownDirection = 3;
+int constexpr kWidth = 1024;
+int constexpr kHeight = 768;
+
+double random(double min, double max)
+{
+    return (double)(rand())/RAND_MAX*(max - min) + min;
+}
 
 bool IsLeftButton(Qt::MouseButtons buttons)
 {
@@ -45,7 +52,7 @@ GLWidget::GLWidget(MainWindow * mw, QColor const & background)
   : m_mainWindow(mw)
   , m_background(background)
 {
-  setMinimumSize(1024, 768);
+  setMinimumSize(kWidth, kHeight);
   setFocusPolicy(Qt::StrongFocus);
 }
 
@@ -53,6 +60,7 @@ GLWidget::~GLWidget()
 {
   makeCurrent();
   delete m_texture;
+  delete m_textureStar;
   delete m_texturedRect;
   doneCurrent();
 }
@@ -63,8 +71,8 @@ void GLWidget::initializeGL()
 
   m_texturedRect = new TexturedRect();
   m_texturedRect->Initialize(this);
-
   m_texture = new QOpenGLTexture(QImage("data/alien.png"));
+  m_textureStar = new QOpenGLTexture(QImage("data/star.png"));
 
   m_time.start();
 }
@@ -86,12 +94,29 @@ void GLWidget::paintGL()
   glEnable(GL_CULL_FACE);
   glEnable(GL_BLEND);
   glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-
   Render();
 
+  /// Set to zero if it reaches the 1.0 .
+  if (m_period < 1.0)
+  {
+    m_period += 0.001f;
+  }
+  else
+  {
+    m_period = 0.0f;
+    for (auto it = m_random.begin() ; it != m_random.end(); ++it)
+    {
+      *it = std::make_pair(random(0,1),random(0,1));
+    }
+  }
+
+  // Generate a parameter for a star.
+  // transperancy is a value between 0.0 and 1.0 .
+  float transperancy = sin(m_period * 2 * PI);
+
+  RenderStar(transperancy);
   glDisable(GL_CULL_FACE);
   glDisable(GL_BLEND);
-
   painter.endNativePainting();
 
   if (elapsed != 0)
@@ -134,9 +159,15 @@ void GLWidget::Update(float elapsedSeconds)
 
 void GLWidget::Render()
 {
-  m_texturedRect->Render(m_texture, m_position, QSize(128, 128), m_screenSize);
-  m_texturedRect->Render(m_texture, QVector2D(400, 400), QSize(128, 128), m_screenSize);
-  m_texturedRect->Render(m_texture, QVector2D(600, 600), QSize(128, 128), m_screenSize);
+  m_texturedRect->Render(m_texture, m_position, QSize(128, 128), m_screenSize, 1.0);
+  m_texturedRect->Render(m_texture, QVector2D(400, 400), QSize(128, 128), m_screenSize, 1.0);
+  m_texturedRect->Render(m_texture, QVector2D(600, 600), QSize(128, 128), m_screenSize, 1.0);
+}
+
+void GLWidget::RenderStar(float blend)
+{
+  for (auto it = m_random.begin() ; it != m_random.end(); ++it)
+    m_texturedRect->Render(m_textureStar, QVector2D((*it).first*kWidth, (*it).second*kHeight), QSize(16, 16), m_screenSize, blend);
 }
 
 void GLWidget::mousePressEvent(QMouseEvent * e)
