@@ -42,7 +42,8 @@ public:
     static std::ofstream m_outfile;
 
     // If a file is opened then just return it.
-    if (m_outfile.is_open()) {
+    if (m_outfile.is_open())
+    {
       return m_outfile;
     }
 
