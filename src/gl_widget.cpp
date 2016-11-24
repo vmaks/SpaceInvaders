@@ -60,7 +60,7 @@ GLWidget::~GLWidget()
 {
   makeCurrent();
   delete m_texture;
-//  delete m_textureStar;
+  delete m_textureStar;
   delete m_texturedRect;
   doneCurrent();
 }
@@ -72,7 +72,7 @@ void GLWidget::initializeGL()
   m_texturedRect = new TexturedRect();
   m_texturedRect->Initialize(this);
   m_texture = new QOpenGLTexture(QImage("data/alien.png"));
-//  m_textureStar = new QOpenGLTexture(QImage("data/star.png"));
+  m_textureStar = new QOpenGLTexture(QImage("data/star.png"));
 
   m_time.start();
 }
@@ -167,7 +167,7 @@ void GLWidget::Render()
 void GLWidget::RenderStar(float blend)
 {
   for (auto it = m_random.begin() ; it != m_random.end(); ++it)
-    m_texturedRect->Render(m_texture, QVector2D((*it).first*kWidth, (*it).second*kHeight), QSize(64, 64), m_screenSize, blend);
+    m_texturedRect->Render(m_textureStar, QVector2D((*it).first*kWidth, (*it).second*kHeight), QSize(16, 16), m_screenSize, blend);
 }
 
 void GLWidget::mousePressEvent(QMouseEvent * e)
