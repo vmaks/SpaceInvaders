@@ -17,6 +17,8 @@ public:
 private slots:
   void on_menuButton_clicked();
 
+  void on_saveButton_clicked();
+
 signals:
   void moveToMenuPage();
 
