@@ -100,7 +100,16 @@ public:
   {
     if (m_isPrint)
     {
-      std::cout << obj;
+      if (m_isPrintToFile)
+      {
+        GetFile() << obj;
+
+        GetFile().flush();
+      }
+      else
+      {
+        std::cout << obj;
+      }
     }
 
     return *this;
@@ -108,7 +117,20 @@ public:
 
   Logger & operator << (std::ostream & (*manip)(std::ostream &))
   {
-    manip(std::cout);
+    if (m_isPrint)
+    {
+      if (m_isPrintToFile)
+      {
+        manip(GetFile());
+
+        GetFile().flush();
+      }
+      else
+      {
+        manip(std::cout);
+      }
+    }
+
     return *this;
   }
 
