@@ -7,14 +7,24 @@ compiler:
 os:
 - linux
 before_install:
+# Update compiler to the latest.
 - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y
 - sudo apt-get update -qq
 - sudo apt-get install g++-5 -y
+# Install qtcore, qtnetwork, qtwidgets, qtgui. It needs for the application.
+- sudo apt-get install qtbase5-dev -y
 env:
   - COMPILER=g++-5
 script:
   - mkdir build
   - cd build
+  # Call the CMake and build the porject.
   - cmake -DCMAKE_CXX_COMPILER=$COMPILER .. && make
-  - ./template_test
+  # Navigate to the bin directory.
+  - cd ..
+  - cd bin
+  # Show directory.
+  - ls
+  # Run tests.
+  - ./SpaceInvaders_test
 
