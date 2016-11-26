@@ -13,6 +13,8 @@ before_install:
 - sudo apt-get install g++-5 -y
 # Install qtcore, qtnetwork, qtwidgets, qtgui. It needs for the application.
 - sudo apt-get install qtbase5-dev -y
+- sudo apt-get install mesa-common-dev -y
+- sudo apt-get install libglu1-mesa-dev -y
 env:
   - COMPILER=g++-5
 script:
