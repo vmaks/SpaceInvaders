@@ -11,7 +11,7 @@
 
 #include <iostream>
 
-#include "main_window.hpp"
+#include "game_window.hpp"
 
 namespace
 {
@@ -48,7 +48,7 @@ bool IsRightButton(QMouseEvent const * const e)
 
 } // namespace
 
-GLWidget::GLWidget(MainWindow * mw, QColor const & background)
+GLWidget::GLWidget(GameWindow * mw, QColor const & background)
   : m_mainWindow(mw)
   , m_background(background)
 {

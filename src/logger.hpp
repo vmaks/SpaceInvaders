@@ -42,7 +42,8 @@ public:
     static std::ofstream m_outfile;
 
     // If a file is opened then just return it.
-    if (m_outfile.is_open()) {
+    if (m_outfile.is_open())
+    {
       return m_outfile;
     }
 
@@ -99,7 +100,35 @@ public:
   {
     if (m_isPrint)
     {
-      std::cout << obj;
+      if (m_isPrintToFile)
+      {
+        GetFile() << obj;
+
+        GetFile().flush();
+      }
+      else
+      {
+        std::cout << obj;
+      }
+    }
+
+    return *this;
+  }
+
+  Logger & operator << (std::ostream & (*manip)(std::ostream &))
+  {
+    if (m_isPrint)
+    {
+      if (m_isPrintToFile)
+      {
+        manip(GetFile());
+
+        GetFile().flush();
+      }
+      else
+      {
+        manip(std::cout);
+      }
     }
 
     return *this;
