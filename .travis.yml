@@ -15,7 +15,6 @@ before_install:
 - sudo apt-get install qtbase5-dev -y
 - sudo apt-get install mesa-common-dev -y
 - sudo apt-get install libglu1-mesa-dev -y
-- sudo apt-get install libgl-dev -y
 env:
   - COMPILER=g++-5
 script:
